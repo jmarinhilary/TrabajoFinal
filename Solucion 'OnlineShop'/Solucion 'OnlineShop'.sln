@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFC3F5
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Fx", "OnlineShop.Fx\OnlineShop.Fx.csproj", "{782CE005-63AA-400B-BDEC-9ADB68F12A9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{1F456524-26E2-4982-9214-D686D9E76DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F456524-26E2-4982-9214-D686D9E76DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F456524-26E2-4982-9214-D686D9E76DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782CE005-63AA-400B-BDEC-9ADB68F12A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782CE005-63AA-400B-BDEC-9ADB68F12A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782CE005-63AA-400B-BDEC-9ADB68F12A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782CE005-63AA-400B-BDEC-9ADB68F12A9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
