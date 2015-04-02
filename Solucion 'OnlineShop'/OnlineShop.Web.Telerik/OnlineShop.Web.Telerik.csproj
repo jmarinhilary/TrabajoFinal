@@ -533,6 +533,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="DBScript\Script OnlineShop.sql" />
+    <Content Include="DBScript\SQLQuery3.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -558,6 +560,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\kendo.modernizr.custom.js" />
     <Content Include="Scripts\kendo\2015.1.318\angular.min.js" />
     <Content Include="Scripts\kendo\2015.1.318\jquery.min.js" />
     <Content Include="Scripts\kendo\2015.1.318\jszip.min.js" />
@@ -688,6 +691,7 @@
     <Content Include="Scripts\kendo\2015.1.318\kendo.window.min.js" />
     <Content Include="Scripts\kendo\2015.1.318\pako_deflate.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
