@@ -20,9 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Fx", "OnlineShop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Web.Telerik", "OnlineShop.Web.Telerik\OnlineShop.Web.Telerik.csproj", "{0C03D738-F74D-420E-9131-D02A0D87343F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Common", "OnlineShop.Common\OnlineShop.Common.csproj", "{C7C6A7F8-FEFD-4012-A3D9-5B8A57169AD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Common", "OnlineShop.Common\OnlineShop.Common.csproj", "{B641D76B-BCA6-4A71-AB43-A658C960DBE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Web.Test", "OnlineShop.Web.Test\OnlineShop.Web.Test.csproj", "{39F538D9-010B-4D7F-81B5-360E53DCA347}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Web.Test", "OnlineShop.Web.Test\OnlineShop.Web.Test.csproj", "{ED2890F0-7374-44E9-B3C7-D17999959670}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,14 +50,14 @@ Global
 		{0C03D738-F74D-420E-9131-D02A0D87343F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C03D738-F74D-420E-9131-D02A0D87343F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C03D738-F74D-420E-9131-D02A0D87343F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7C6A7F8-FEFD-4012-A3D9-5B8A57169AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7C6A7F8-FEFD-4012-A3D9-5B8A57169AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7C6A7F8-FEFD-4012-A3D9-5B8A57169AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7C6A7F8-FEFD-4012-A3D9-5B8A57169AD5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39F538D9-010B-4D7F-81B5-360E53DCA347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39F538D9-010B-4D7F-81B5-360E53DCA347}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39F538D9-010B-4D7F-81B5-360E53DCA347}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39F538D9-010B-4D7F-81B5-360E53DCA347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B641D76B-BCA6-4A71-AB43-A658C960DBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B641D76B-BCA6-4A71-AB43-A658C960DBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B641D76B-BCA6-4A71-AB43-A658C960DBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B641D76B-BCA6-4A71-AB43-A658C960DBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED2890F0-7374-44E9-B3C7-D17999959670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED2890F0-7374-44E9-B3C7-D17999959670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED2890F0-7374-44E9-B3C7-D17999959670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED2890F0-7374-44E9-B3C7-D17999959670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
