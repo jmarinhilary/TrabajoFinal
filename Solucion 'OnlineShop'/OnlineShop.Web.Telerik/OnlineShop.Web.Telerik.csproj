@@ -879,6 +879,20 @@
     <None Include="Scripts\kendo\2015.1.318\kendo.web-vsdoc.js" />
     <None Include="Scripts\kendo\2015.1.318\kendo.web.min.intellisense.js" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.Common\OnlineShop.Common.csproj">
+      <Project>{b641d76b-bca6-4a71-ab43-a658c960dbe4}</Project>
+      <Name>OnlineShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Fx\OnlineShop.Fx.csproj">
+      <Project>{782ce005-63aa-400b-bdec-9adb68f12a9d}</Project>
+      <Name>OnlineShop.Fx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Services\OnlineShop.Services.csproj">
+      <Project>{7e28c9c6-ac01-422b-aab4-3a717cb12639}</Project>
+      <Name>OnlineShop.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
