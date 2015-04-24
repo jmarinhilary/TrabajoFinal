@@ -11,7 +11,7 @@ using OnlineShop.Fx.Util;
 
 namespace OnlineShop.Repositories
 {
-    public class RepositoryBase<TEntity, TContext> : IRepository<TEntity>
+    public abstract class RepositoryBase<TEntity, TContext> : IRepository<TEntity>
         where TEntity : EntityBase
         where TContext : DbContext
     {

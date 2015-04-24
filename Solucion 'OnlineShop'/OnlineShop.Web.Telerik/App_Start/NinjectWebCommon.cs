@@ -4,7 +4,7 @@ using OnlineShop.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using Ninject.Extensions.Conventions;
+
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(OnlineShop.Web.Telerik.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(OnlineShop.Web.Telerik.App_Start.NinjectWebCommon), "Stop")]
@@ -16,6 +16,7 @@ namespace OnlineShop.Web.Telerik.App_Start
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
     
 
     public static class NinjectWebCommon 
@@ -52,18 +53,19 @@ namespace OnlineShop.Web.Telerik.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                kernel.Bind(
-                    o => o.FromAssemblyContaining<ProductoRepository>()
-                        .SelectAllClasses()
-                        .WhichAreNotGeneric()
-                        .InheritedFrom(typeof (IRepository<>))
-                        .BindAllInterfaces()
-                    );
-                kernel.Bind<ShopContext>().ToSelf().InRequestScope();
+                //kernel.Bind(
+                //    o => o.FromAssemblyContaining<ProductoRepository>()
+                //        .SelectAllClasses()
+                //        .WhichAreNotGeneric()
+                //        .InheritedFrom(typeof (IRepository<>))
+                //        .BindAllInterfaces()
+                //    );
+                //kernel.Bind<ShopContext>().ToSelf().InRequestScope();
 
                 
                 
-                DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+                //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
                 RegisterServices(kernel);
                 return kernel;
             }

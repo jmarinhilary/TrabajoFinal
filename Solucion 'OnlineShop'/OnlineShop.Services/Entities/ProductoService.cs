@@ -34,7 +34,8 @@ namespace OnlineShop.Services.Entities
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this._productoRepository = null;
+            this._shopContext = null;
         }
     }
 }
