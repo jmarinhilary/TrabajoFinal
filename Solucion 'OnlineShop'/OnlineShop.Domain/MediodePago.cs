@@ -8,8 +8,7 @@ namespace OnlineShop.Domain
     [Table("MediodePago")]
     public partial class MediodePago : EntityBase
     {
-        [SuppressMessage("Microsoft.Usage",
-            "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        
         public MediodePago()
         {
             Pedido = new HashSet<Pedido>();
@@ -21,8 +20,6 @@ namespace OnlineShop.Domain
         [StringLength(100)]
         public string Descripcion { get; set; }
 
-        [SuppressMessage("Microsoft.Usage",
-            "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

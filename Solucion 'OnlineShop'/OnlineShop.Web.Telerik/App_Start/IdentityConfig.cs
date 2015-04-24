@@ -106,4 +106,6 @@ namespace OnlineShop.Web.Telerik
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
+
 }

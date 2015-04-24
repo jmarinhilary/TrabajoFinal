@@ -8,8 +8,6 @@ namespace OnlineShop.Domain
     [Table("Producto")]
     public partial class Producto : EntityBase
     {
-        [SuppressMessage("Microsoft.Usage",
-            "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
             Pedido_Producto = new HashSet<Pedido_Producto>();
@@ -34,16 +32,15 @@ namespace OnlineShop.Domain
         [StringLength(1)]
         public string Descontinuado { get; set; }
 
+        [StringLength(10)]
+        public string Sku { get; set; }
+
         public virtual Categoria Categoria { get; set; }
 
         public virtual Marca Marca { get; set; }
 
-        [SuppressMessage("Microsoft.Usage",
-            "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_Producto> Pedido_Producto { get; set; }
 
-        [SuppressMessage("Microsoft.Usage",
-            "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Proveedor> Producto_Proveedor { get; set; }
     }
 }

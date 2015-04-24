@@ -876,10 +876,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Producto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -905,6 +905,10 @@
     <ProjectReference Include="..\OnlineShop.Fx\OnlineShop.Fx.csproj">
       <Project>{782ce005-63aa-400b-bdec-9adb68f12a9d}</Project>
       <Name>OnlineShop.Fx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Repositories\OnlineShop.Repositories.csproj">
+      <Project>{02BC5D02-A57A-42CE-8E53-16F63B9C48CD}</Project>
+      <Name>OnlineShop.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\OnlineShop.Services\OnlineShop.Services.csproj">
       <Project>{7e28c9c6-ac01-422b-aab4-3a717cb12639}</Project>

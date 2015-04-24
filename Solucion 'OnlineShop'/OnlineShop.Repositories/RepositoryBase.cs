@@ -11,7 +11,7 @@ using OnlineShop.Fx.Util;
 
 namespace OnlineShop.Repositories
 {
-    public abstract class RepositoryBase<TEntity, TContext> : IRepository<TEntity>
+    public class RepositoryBase<TEntity, TContext> : IRepository<TEntity>
         where TEntity : EntityBase
         where TContext : DbContext
     {
@@ -33,34 +33,34 @@ namespace OnlineShop.Repositories
             Context.SaveChanges();
         }
 
-        public IQueryable<TEntity> GetQueryable()
+        public IQueryable<TEntity> Get()
         {
             return Context.Set<TEntity>().AsQueryable();
         }
 
-        public void Update(TEntity entity, Expression<Func<TEntity, object>>[] properties,
-            Expression<Func<TEntity, bool>> predicateExpression)
-        {
-            TEntity modelEntity = this.Context.Set<TEntity>().AsQueryable().Where(predicateExpression).FirstOrDefault();
-            Type modelType = typeof (TEntity);
-            foreach (var property in properties)
-            {
-                string propertyName = property.GetMemberName();
-                var propertyValue = modelType.GetProperty(propertyName).GetValue(entity);
-                modelType.GetProperty(propertyName).SetValue(modelEntity, propertyValue);
-            }
-            this.Context.SaveChanges();
-        }
+        //public void Update(TEntity entity, Expression<Func<TEntity, object>>[] properties,
+        //    Expression<Func<TEntity, bool>> predicateExpression)
+        //{
+        //    TEntity modelEntity = this.Context.Set<TEntity>().AsQueryable().Where(predicateExpression).FirstOrDefault();
+        //    Type modelType = typeof (TEntity);
+        //    foreach (var property in properties)
+        //    {
+        //        string propertyName = property.GetMemberName();
+        //        var propertyValue = modelType.GetProperty(propertyName).GetValue(entity);
+        //        modelType.GetProperty(propertyName).SetValue(modelEntity, propertyValue);
+        //    }
+        //    this.Context.SaveChanges();
+        //}
 
-        public IQueryable<TEntity> GetQueryable(Expression<Func<TEntity, bool>> predicateExpression)
-        {
-            return Context.Set<TEntity>().AsQueryable().Where(predicateExpression);
-        }
+        //public IQueryable<TEntity> GetQueryable(Expression<Func<TEntity, bool>> predicateExpression)
+        //{
+        //    return Context.Set<TEntity>().AsQueryable().Where(predicateExpression);
+        //}
 
-        public void Delete(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicateExpression)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Delete(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicateExpression)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void Dispose()
         {

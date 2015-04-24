@@ -131,59 +131,59 @@ CREATE TABLE dbo.EstadoPedido(
 
 
 ALTER TABLE [dbo].[Producto] ADD CONSTRAINT [FK_ProductoIdMarca]
-    FOREIGN KEY ([IdMarca]) REFERENCES [dbo].[Marca] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdMarca]) REFERENCES [dbo].[Marca] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_ProductoIdMarca] ON [dbo].[Producto] ([IdMarca]);
 GO
 ALTER TABLE [dbo].[Producto] ADD CONSTRAINT [FK_ProductoIdCategoria]
-    FOREIGN KEY ([IdCategoria]) REFERENCES [dbo].[Categoria] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdCategoria]) REFERENCES [dbo].[Categoria] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_ProductoIdCategoria] ON [dbo].[Producto] ([IdCategoria]);
 GO
 ALTER TABLE [dbo].[Producto_Proveedor] ADD CONSTRAINT [FK_Producto_ProveedorIdProducto]
-    FOREIGN KEY ([IdProducto]) REFERENCES [dbo].[Producto] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdProducto]) REFERENCES [dbo].[Producto] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_Producto_ProveedorIdProducto] ON [dbo].[Producto_Proveedor] ([IdProducto]);
 GO
 
 ALTER TABLE [dbo].[Producto_Proveedor] ADD CONSTRAINT [FK_Producto_ProveedorIdProveedor]
-    FOREIGN KEY ([IdProveedor]) REFERENCES [dbo].[Proveedor] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdProveedor]) REFERENCES [dbo].[Proveedor] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_Producto_ProveedorIdProveedor] ON [dbo].[Producto_Proveedor] ([IdProveedor]);
 GO
 
 ALTER TABLE [dbo].[Pedido] ADD CONSTRAINT [FK_PedidoIdCliente]
-    FOREIGN KEY ([IdCliente]) REFERENCES [dbo].[Cliente] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdCliente]) REFERENCES [dbo].[Cliente] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_PedidoIdCliente] ON [dbo].[Pedido] ([IdCliente]);
 GO
 
 ALTER TABLE [dbo].[Pedido] ADD CONSTRAINT [FK_PedidoIdEstadoPed]
-    FOREIGN KEY ([IdEstadoPed]) REFERENCES [dbo].[EstadoPedido] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdEstadoPed]) REFERENCES [dbo].[EstadoPedido] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_PedidoIdEstadoPed] ON [dbo].[Pedido] ([IdEstadoPed]);
 GO
 
 ALTER TABLE [dbo].[Pedido] ADD CONSTRAINT [FK_PedidoIdMedioDePago]
-    FOREIGN KEY ([IdMedioDePago]) REFERENCES [dbo].[MediodePago] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdMedioDePago]) REFERENCES [dbo].[MediodePago] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_PedidoIdMedioDePago] ON [dbo].[Pedido] ([IdMedioDePago]);
 GO
 
 ALTER TABLE [dbo].[Pedido] ADD CONSTRAINT [FK_PedidoIdEmpleado]
-    FOREIGN KEY ([IdEmpleado]) REFERENCES [dbo].[Empleado] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdEmpleado]) REFERENCES [dbo].[Empleado] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_PedidoIdEmpleado] ON [dbo].[Pedido] ([IdEmpleado]);
 GO
 
 ALTER TABLE [dbo].[Pedido_Producto] ADD CONSTRAINT [FK_Pedido_ProductoIdPedido]
-    FOREIGN KEY ([IdPedido]) REFERENCES [dbo].[Pedido] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdPedido]) REFERENCES [dbo].[Pedido] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_Pedido_ProductoIdPedido] ON [dbo].[Pedido_Producto] ([IdPedido]);
 GO
 
 ALTER TABLE [dbo].[Pedido_Producto] ADD CONSTRAINT [FK_Pedido_ProductoIdProducto]
-    FOREIGN KEY ([IdProducto]) REFERENCES [dbo].[Producto] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	FOREIGN KEY ([IdProducto]) REFERENCES [dbo].[Producto] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 CREATE INDEX [IFK_Pedido_ProductoIdProducto] ON [dbo].[Pedido_Producto] ([IdProducto]);
 GO
