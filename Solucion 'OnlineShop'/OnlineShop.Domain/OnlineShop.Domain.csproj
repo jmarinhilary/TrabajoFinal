@@ -55,6 +55,7 @@
     <Compile Include="Empleado.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EstadoPedido.cs" />
+    <Compile Include="Imagenes.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="MediodePago.cs" />
     <Compile Include="Pedido.cs" />

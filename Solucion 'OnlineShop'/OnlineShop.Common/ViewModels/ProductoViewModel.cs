@@ -26,12 +26,7 @@ namespace OnlineShop.Common.ViewModels
 
         public string Sku { get; set; }
 
-        //public Categoria Categoria { get; set; }
+        public string Ruta { get; set; }
 
-        //public virtual Marca Marca { get; set; }
-
-        //public virtual ICollection<Pedido_Producto> Pedido_Producto { get; set; }
-
-        //public virtual ICollection<Producto_Proveedor> Producto_Proveedor { get; set; }
     }
 }

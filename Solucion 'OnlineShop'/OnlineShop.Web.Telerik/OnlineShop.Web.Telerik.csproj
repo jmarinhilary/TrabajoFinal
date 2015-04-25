@@ -556,6 +556,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\jgh_1.jpg" />
+    <Content Include="Imagenes\rgbrsh.jpg" />
     <Content Include="lib\KENDOUIMVC\2015.1.318.545.Trial\bg-BG\Kendo.Mvc.resources.dll" />
     <Content Include="lib\KENDOUIMVC\2015.1.318.545.Trial\cs-CZ\Kendo.Mvc.resources.dll" />
     <Content Include="lib\KENDOUIMVC\2015.1.318.545.Trial\da-DK\Kendo.Mvc.resources.dll" />

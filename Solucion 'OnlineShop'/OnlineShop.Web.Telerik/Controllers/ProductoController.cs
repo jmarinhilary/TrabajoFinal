@@ -19,7 +19,7 @@ namespace OnlineShop.Web.Telerik.Controllers
         public ActionResult Index()
         {
             var productos = _productoService.GetProducts();
-            return View();
+            return View(productos);
         }
     }
 }

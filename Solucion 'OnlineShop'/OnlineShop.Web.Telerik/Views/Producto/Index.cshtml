@@ -3,14 +3,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Productos</h2>
+<br/>
+<br/>
 <div class="row">
     <div class="col-md-3">
-        <span>Productos</span>
+        <span></span>
     </div>
     <div class="col-md-9">
-        
+        <div class="col-md-12">
+
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">                
+                <span class="text-justify">@item.Nombre</span>
+            </div>
+        }
+
     </div>
 
 </div>

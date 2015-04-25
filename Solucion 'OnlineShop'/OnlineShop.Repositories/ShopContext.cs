@@ -21,6 +21,7 @@ namespace OnlineShop.Repositories
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Producto_Proveedor> Producto_Proveedor { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Imagenes> Imagenes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
