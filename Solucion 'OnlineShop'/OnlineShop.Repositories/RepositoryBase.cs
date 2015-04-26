@@ -24,7 +24,8 @@ namespace OnlineShop.Repositories
         public int Create(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
-            return Context.SaveChanges();
+            Context.SaveChanges();
+            return entity.Id;
         }
 
         public void Update(TEntity entity)
