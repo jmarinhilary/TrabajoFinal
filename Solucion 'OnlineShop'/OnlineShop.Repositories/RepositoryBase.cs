@@ -21,10 +21,10 @@ namespace OnlineShop.Repositories
         {
             this.Context = context;
         }
-        public void Create(TEntity entity)
+        public int Create(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
-            Context.SaveChanges();
+            return Context.SaveChanges();
         }
 
         public void Update(TEntity entity)

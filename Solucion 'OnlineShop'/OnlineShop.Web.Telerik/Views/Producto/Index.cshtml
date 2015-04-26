@@ -4,8 +4,8 @@
 }
 
 <h2>Productos</h2>
-<br/>
-<br/>
+<br />
+<br />
 <div class="row">
     <div class="col-md-3">
         <span></span>
@@ -16,12 +16,20 @@
         </div>
         @foreach (var item in Model)
         {
-            <div class="col-md-4">                
-                <span class="text-justify">@item.Nombre</span>
+            <div class="col-xs-6 col-md-4 text-center">
+                <a href="@Url.Action("ProductoDetalle", "Producto", new { id = @item.Id })">
+                    <img class="img-responsive" src="@Url.Content(@item.Ruta)" alt="@item.Nombre" />
+                </a>
+                <div class="col-xs-12">
+                    <a href="@Url.Action("ProductoDetalle", "Producto", new { id = @item.Id })">
+                        <span class="text-justify">@item.Nombre</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 text-danger">
+                    @string.Format("{0:C}", item.PrecioCosto)
+                </div>
             </div>
         }
-
     </div>
 
 </div>
-

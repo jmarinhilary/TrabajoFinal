@@ -9,7 +9,6 @@ namespace OnlineShop.Domain
     [Table("Producto")]
     public partial class Producto : EntityBase
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
             Imagenes = new HashSet<Imagenes>();
@@ -17,7 +16,7 @@ namespace OnlineShop.Domain
             Producto_Proveedor = new HashSet<Producto_Proveedor>();
         }
 
-        [StringLength(100)]
+        [StringLength(400)]
         public string Nombre { get; set; }
 
         [StringLength(100)]
@@ -40,15 +39,12 @@ namespace OnlineShop.Domain
 
         public virtual Categoria Categoria { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Imagenes> Imagenes { get; set; }
 
         public virtual Marca Marca { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_Producto> Pedido_Producto { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Proveedor> Producto_Proveedor { get; set; }
     }
 }

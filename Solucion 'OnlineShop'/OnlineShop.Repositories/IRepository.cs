@@ -7,7 +7,7 @@ namespace OnlineShop.Repositories
     public interface IRepository<T> : IDisposable
         where T : EntityBase
     {
-        void Create(T entity);
+        int Create(T entity);
         IQueryable<T> Get();
         void Update(T entity);
         //void Update(T entity, Expression<Func<T, object>>[] properties, Expression<Func<T, bool>> predicateExpression);

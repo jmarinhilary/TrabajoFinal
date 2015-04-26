@@ -28,5 +28,9 @@ namespace OnlineShop.Common.ViewModels
 
         public string Ruta { get; set; }
 
+        public int Cantidad { get; set; }
+
+        public IEnumerable<ImagenesViewModel> Imagenes { get; set; }
+
     }
 }

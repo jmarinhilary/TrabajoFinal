@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineShop.Web.Telerik.Models;
+using OnlineShop.Services.Entities;
+using OnlineShop.Common.ViewModels;
 
 namespace OnlineShop.Web.Telerik.Controllers
 {
@@ -17,15 +19,17 @@ namespace OnlineShop.Web.Telerik.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ClienteService _clienteService;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ClienteService clienteService )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            this._clienteService = clienteService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -155,7 +159,16 @@ namespace OnlineShop.Web.Telerik.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    _clienteService = new ClienteService();
+                    _clienteService.Create(
+                        new ClienteViewModel
+                        {
+                            Nombre = user.Email,
+                            Email = user.Email,
+                            ApellidoP = user.Email
+                        });
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

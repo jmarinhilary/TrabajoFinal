@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\ClienteService.cs" />
+    <Compile Include="Entities\PedidoProductoService.cs" />
+    <Compile Include="Entities\PedidoService.cs" />
     <Compile Include="Entities\ProductoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

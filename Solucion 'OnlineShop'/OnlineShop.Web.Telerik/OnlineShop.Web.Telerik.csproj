@@ -550,12 +550,16 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="DBScript\Script OnlineShop.sql" />
-    <Content Include="DBScript\SQLQuery3.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\24235234234_1_.jpg" />
+    <Content Include="Imagenes\34535_1_1.jpg" />
+    <Content Include="Imagenes\hp-15z-g100-y2pp_2_1.jpg" />
     <Content Include="Imagenes\jgh_1.jpg" />
     <Content Include="Imagenes\rgbrsh.jpg" />
     <Content Include="lib\KENDOUIMVC\2015.1.318.545.Trial\bg-BG\Kendo.Mvc.resources.dll" />
@@ -843,7 +847,11 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -879,6 +887,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\ProductoDetalle.cshtml" />
+    <Content Include="Views\Producto\Carrito.cshtml" />
+    <Content Include="Views\Producto\RegistroPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
