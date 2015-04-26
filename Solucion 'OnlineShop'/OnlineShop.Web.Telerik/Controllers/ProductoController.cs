@@ -71,10 +71,10 @@ namespace OnlineShop.Web.Telerik.Controllers
         }
 
         [Authorize]
-        public ActionResult RegistroPedido() 
+        public ActionResult RegistroPedido()
         {
             List<ProductoViewModel> Carrito = new List<ProductoViewModel>();
-            Carrito = (List<ProductoViewModel>)Session["Carrito"];
+            Carrito = (List<ProductoViewModel>) Session["Carrito"];
             PedidoViewModel pedidoViewModel = new PedidoViewModel();
             pedidoViewModel.UserName = User.Identity.Name;
             pedidoViewModel.FechaPedido = DateTime.Now;
