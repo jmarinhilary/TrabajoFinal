@@ -21,25 +21,32 @@ namespace OnlineShop.Services.Entities
             this._imagenesRepository = new ImagenesRepository(_shopContext);
         }
 
-        public IEnumerable<ProductoViewModel> GetProducts()
+        public IEnumerable<ProductoIndexViewModel> GetProducts()
         {
-            var productos = (from p in _productoRepository.Get()
-                             join f in _imagenesRepository.Get() on p.Id equals f.IdProducto
-                             where f.Tipo == "P"
-                             select new ProductoViewModel
-                             {
-                                 Id = p.Id,
-                                 Sku = p.Sku,
-                                 Nombre = p.Nombre,
-                                 Descripcion = p.Descripcion,
-                                 PrecioCosto = p.PrecioCosto,
-                                 Ruta = f.Ruta
-                             }).ToList();
+            //var productos = (from p in _productoRepository.Get()
+            //                 join f in _imagenesRepository.Get() on p.Id equals f.IdProducto
+            //                 where f.Tipo == "P"
+            //                 select new ProductoViewModel
+            //                 {
+            //                     Id = p.Id,
+            //                     Sku = p.Sku,
+            //                     Nombre = p.Nombre,
+            //                     Descripcion = p.Descripcion,
+            //                     PrecioCosto = p.PrecioCosto,
+            //                     Ruta = f.Ruta
+            //                 }).ToList();
+
+            var productos = _productoRepository.Get().ToList();
+            Mapper.CreateMap<List<Imagenes>, string>().ConvertUsing<TraerImagenPrincipal>();
+            Mapper.CreateMap<Producto, ProductoIndexViewModel>();
+
+            return Mapper.Map<List<Producto>, List<ProductoIndexViewModel>>(productos);
+
+
             //Mapper.CreateMap<Producto, ProductoViewModel>();
             ////Mapper.CreateMap<Producto,ProductoViewModel>();
             //IEnumerable<ProductoViewModel> productoViewModel = Mapper.Map<IEnumerable<Producto>, IEnumerable<ProductoViewModel>>(productos);
             ////productoViewModel = Mapper.Map<IEnumerable<Producto>, List<ProductoViewModel>(productos);
-            return productos;
         }
 
         public ProductoViewModel GetProduct(int id)

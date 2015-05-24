@@ -33,4 +33,20 @@ namespace OnlineShop.Common.ViewModels
         public IEnumerable<ImagenesViewModel> Imagenes { get; set; }
 
     }
+
+    public class ProductoIndexViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public decimal? PrecioCosto { get; set; }
+
+        public string Sku { get; set; }
+
+        public string Ruta { get; set; }
+
+
+    }
 }
