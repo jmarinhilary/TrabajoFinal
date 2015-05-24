@@ -82,6 +82,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             var Pedido = _pedidoService.Create(pedidoViewModel, Carrito);
             ViewBag.Pedido = Pedido;
             Session["Carrito"] = null;
+
             return View();
         }
 

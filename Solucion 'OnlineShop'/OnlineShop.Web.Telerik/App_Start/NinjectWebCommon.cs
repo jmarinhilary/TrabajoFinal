@@ -17,9 +17,10 @@ namespace OnlineShop.Web.Telerik.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
+    using OnlineShop.Web.Telerik.Models;
     
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon        
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
@@ -53,18 +54,35 @@ namespace OnlineShop.Web.Telerik.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                //kernel.Bind(
-                //    o => o.FromAssemblyContaining<ProductoRepository>()
-                //        .SelectAllClasses()
-                //        .WhichAreNotGeneric()
-                //        .InheritedFrom(typeof (IRepository<>))
-                //        .BindAllInterfaces()
-                //    );
-                //kernel.Bind<ShopContext>().ToSelf().InRequestScope();
+                kernel.Bind(
+                    o => o.FromAssemblyContaining<ProductoRepository>()
+                        .SelectAllClasses()
+                        .WhichAreNotGeneric()
+                        .InheritedFrom(typeof(IRepository<>))
+                        .BindAllInterfaces()
+                    );
+                kernel.Bind<ShopContext>().ToSelf().InRequestScope();
 
-                
-                
-                //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+                kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
+                kernel.Bind<IUserStore<ApplicationUser>>()
+                    .To<UserStore<ApplicationUser>>()
+                    .InRequestScope()
+                    .WithConstructorArgument("context", kernel.Get<ApplicationDbContext>());
+                kernel.Bind<UserManager<ApplicationUser>>().ToSelf().InRequestScope();
+
+                kernel.Bind<IAuthenticationManager>().ToMethod(
+                    m => HttpContext.Current.GetOwinContext().Authentication
+                    ).InRequestScope();
+
+                kernel.Bind<IRoleStore<IdentityRole, string>>()
+                    .To<RoleStore<IdentityRole>>()
+                    .InRequestScope()
+                    .WithConstructorArgument("context", kernel.Get<ApplicationDbContext>());
+                kernel.Bind<RoleManager<IdentityRole>>().ToSelf().InRequestScope();
+
+
+
+                DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
 
                 RegisterServices(kernel);
                 return kernel;

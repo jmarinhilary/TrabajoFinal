@@ -17,21 +17,14 @@ namespace OnlineShop.Web.Telerik.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private ClienteService _clienteService;
-
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ClienteService clienteService )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ClienteService clienteService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             this._clienteService = clienteService;
         }
 
+        private ApplicationSignInManager _signInManager;
         public ApplicationSignInManager SignInManager
         {
             get
@@ -44,6 +37,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             }
         }
 
+        private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
             get
@@ -105,7 +99,12 @@ namespace OnlineShop.Web.Telerik.Controllers
             {
                 return View("Error");
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
+            if (user != null)
+            {
+                ViewBag.Status = "For DEMO purposes the current " + provider;
+            }
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl });
         }
 
         //
@@ -161,6 +160,7 @@ namespace OnlineShop.Web.Telerik.Controllers
                 {
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
                     _clienteService = new ClienteService();
                     _clienteService.Create(
                         new ClienteViewModel
@@ -172,10 +172,9 @@ namespace OnlineShop.Web.Telerik.Controllers
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -224,10 +223,10 @@ namespace OnlineShop.Web.Telerik.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -439,7 +438,7 @@ namespace OnlineShop.Web.Telerik.Controllers
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
+        private ClienteService _clienteService;
         private IAuthenticationManager AuthenticationManager
         {
             get

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using OnlineShop.Domain;
+using System.Linq.Expressions;
 
 namespace OnlineShop.Repositories
 {
@@ -10,9 +11,9 @@ namespace OnlineShop.Repositories
         int Create(T entity);
         IQueryable<T> Get();
         void Update(T entity);
-        //void Update(T entity, Expression<Func<T, object>>[] properties, Expression<Func<T, bool>> predicateExpression);
-        //IQueryable<T> GetQueryable(Expression<Func<T, bool>> predicateExpression);
-        //void Delete(Expression<Func<T, bool>> predicateExpression);
+        void Update(T entity, Expression<Func<T, object>>[] properties, Expression<Func<T, bool>> predicateExpression);
+        IQueryable<T> GetQueryable(Expression<Func<T, bool>> predicateExpression);
+        void Delete(Expression<Func<T, bool>> predicateExpression);
 
     }
 }

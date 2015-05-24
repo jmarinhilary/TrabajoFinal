@@ -64,6 +64,7 @@ namespace OnlineShop.Web.Telerik.Models
 
     public class RegisterViewModel
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +80,17 @@ namespace OnlineShop.Web.Telerik.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        [StringLength(40, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Apellido")]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        public string LastName { get; set; }     
+        
     }
 
     public class ResetPasswordViewModel
