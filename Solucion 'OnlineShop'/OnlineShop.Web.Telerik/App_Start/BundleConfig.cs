@@ -22,13 +22,35 @@ namespace OnlineShop.Web.Telerik
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/toastr.js"));  
+                      "~/Scripts/toastr.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                      "~/Scripts/CommonUI.js"
+                
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/KendoJs").Include(
+                "~/Scripts/kendo/2015.1.318/jquery.min.js",
+                "~/Scripts/kendo/2015.1.318/jszip.min.js",
+                "~/Scripts/kendo/2015.1.318/kendo.all.min.js",
+                "~/Scripts/kendo/2015.1.318/kendo.aspnetmvc.min.js",
+                "~/Scripts/kendo.modernizr.custom.js"
+                ));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/KendoContent/css").Include(
+                "~/Content/kendo/2015.1.318/kendo.common-bootstrap.min.css",
+                "~/Content/kendo/2015.1.318/kendo.mobile.all.min.css",
+                "~/Content/kendo/2015.1.318/kendo.dataviz.min.css",
+                "~/Content/kendo/2015.1.318/kendo.bootstrap.min.css",
+                "~/Content/kendo/2015.1.318/kendo.dataviz.bootstrap.min.css"
+                ));
+
         }
     }
 }

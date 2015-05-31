@@ -48,9 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaRepository.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="ImagenesRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="MarcaRepository.cs" />
     <Compile Include="PedidoProductoRepository.cs" />
     <Compile Include="PedidoRepository.cs" />
     <Compile Include="ProductoRepository.cs" />

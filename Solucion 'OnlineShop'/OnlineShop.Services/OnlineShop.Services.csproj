@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\CategoriaService.cs" />
     <Compile Include="Entities\ClienteService.cs" />
+    <Compile Include="Entities\MarcaService.cs" />
     <Compile Include="Entities\PedidoProductoService.cs" />
     <Compile Include="Entities\PedidoService.cs" />
     <Compile Include="Entities\ProductoService.cs" />

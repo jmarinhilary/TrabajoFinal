@@ -21,12 +21,12 @@ namespace OnlineShop.Services.Entities
             this._imagenesRepository = new ImagenesRepository(_shopContext);
         }
 
-        public IEnumerable<ProductoViewModel> GetProducts()
+        public IEnumerable<ProductoIndexViewModel> GetProducts()
         {
             var productos = (from p in _productoRepository.Get()
                              join f in _imagenesRepository.Get() on p.Id equals f.IdProducto
                              where f.Tipo == "P"
-                             select new ProductoViewModel
+                             select new ProductoIndexViewModel
                              {
                                  Id = p.Id,
                                  Sku = p.Sku,
@@ -40,6 +40,25 @@ namespace OnlineShop.Services.Entities
             //IEnumerable<ProductoViewModel> productoViewModel = Mapper.Map<IEnumerable<Producto>, IEnumerable<ProductoViewModel>>(productos);
             ////productoViewModel = Mapper.Map<IEnumerable<Producto>, List<ProductoViewModel>(productos);
             return productos;
+        }
+
+        public ProductoAdminViewModel ProductoAdminInit()
+        {
+            ProductoAdminViewModel viewModel = new ProductoAdminViewModel();
+            viewModel.ListaProducto = GetProductsAdmin();
+            return viewModel;
+        }
+
+        public List<ProductoViewModel> GetProductsAdmin()
+        {
+            var ListaProducto = _productoRepository.Get()
+                                        .Select(x => new ProductoViewModel
+                                        {
+                                            Id = x.Id,
+                                            Nombre = x.Nombre,
+                                            Cantidad = 0
+                                        }).ToList();
+            return ListaProducto;
         }
 
         public ProductoViewModel GetProduct(int id)

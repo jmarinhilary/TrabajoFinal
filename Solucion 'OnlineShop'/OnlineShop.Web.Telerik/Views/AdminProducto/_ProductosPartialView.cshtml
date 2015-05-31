@@ -1,0 +1,34 @@
+﻿@model OnlineShop.Common.ViewModels.ProductoAdminViewModel
+
+@(Html.Kendo().Grid(Model.ListaProducto)
+    .Name("Grid")
+    .HtmlAttributes(new { @id = "Grid-Producto-List" })
+    .DataSource(ds => ds.Ajax()
+                        .Read("productoRead", "AdminProducto")
+                        .PageSize(10)
+                )
+    .Columns(columns =>
+    {
+        @*columns.Template(@<text></text>).ClientTemplate(
+        "<button type='button' class='btn btn-default btn-sm' data-Id='#: Id#'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button>");*@
+        columns.Template(@<text></text>).ClientTemplate(
+        "<a href='javascript:'  class='btn btn-default btn-sm editarModal' role='button' data-Id=#=Id#><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button>"
+                         );
+        columns.Bound(p => p.Id).Title("ID");
+        columns.Bound(p => p.Nombre).Title("NOMBRE");
+        columns.Bound(p => p.Cantidad).Title("CANTIDAD");
+    })
+    .Pageable(pager =>
+    {
+        pager.PageSizes(new[] { 10, 20, 30 });
+        pager.Messages(m => m.Empty("No se encontraron resultados para la búsqueda")
+                             .ItemsPerPage("Registros por Página")
+                             .Display("{0} - {1} de {2} Registros")
+                             .Next("Ir a la siguiente página").Last("Ir a la última página")
+                             .Previous("Ir a la página previa").First("Ir a la primera página")
+                       );
+    })
+    .Sortable()
+
+
+)

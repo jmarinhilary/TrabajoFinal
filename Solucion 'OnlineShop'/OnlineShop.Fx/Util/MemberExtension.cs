@@ -78,10 +78,7 @@ namespace OnlineShop.Fx.Util
 
         public static bool GetReguiredAttr<TModel>(string propertyName)
         {
-            Type type = typeof(TModel);
-            //MemberExpression memberExpression = (MemberExpression)expression.Body;
-            //string propertyName = ((memberExpression.Member is PropertyInfo) ? memberExpression.Member.Name : null);
-            // First look into attributes on a type and it's parents
+            Type type = typeof(TModel);            
             RequiredAttribute attr;
             attr = (RequiredAttribute)type.GetProperty(propertyName).GetCustomAttributes(typeof(RequiredAttribute), true).SingleOrDefault();
             return (attr != null) ? true : false;
