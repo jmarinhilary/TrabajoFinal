@@ -57,6 +57,7 @@
     <Compile Include="Entities\PedidoProductoService.cs" />
     <Compile Include="Entities\PedidoService.cs" />
     <Compile Include="Entities\ProductoService.cs" />
+    <Compile Include="Entities\TraerImagenPrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
