@@ -2530,8 +2530,8 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
-  padding: 6px 12px;
+  height: 28px;
+  padding: 0px 12px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -2545,6 +2545,15 @@ output {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+select.form-control {
+    padding: 0px;
+}
+
+input[type=checkbox].form-control {
+    height: 20px;
+}
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;

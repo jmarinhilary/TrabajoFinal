@@ -31,8 +31,7 @@ namespace OnlineShop.Domain
         [Column(TypeName = "money")]
         public decimal? PrecioCosto { get; set; }
 
-        [StringLength(1)]
-        public string Descontinuado { get; set; }
+        public bool Descontinuado { get; set; }
 
         [StringLength(10)]
         public string Sku { get; set; }

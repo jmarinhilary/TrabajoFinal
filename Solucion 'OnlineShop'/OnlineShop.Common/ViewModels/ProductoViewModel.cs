@@ -22,7 +22,7 @@ namespace OnlineShop.Common.ViewModels
 
         public decimal? PrecioCosto { get; set; }
 
-        public string Descontinuado { get; set; }
+        public bool Descontinuado { get; set; }
 
         public string Sku { get; set; }
 
@@ -43,12 +43,6 @@ namespace OnlineShop.Common.ViewModels
         public decimal? PrecioCosto { get; set; }
         public string Ruta { get; set; }
 
-    }
-
-    public class ProductoAdminViewModel
-    {
-        public string SeachCriteria { set; get; }
-        public List<ProductoViewModel> ListaProducto { get; set; }
-    }
+    }    
 
 }

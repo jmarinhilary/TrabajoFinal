@@ -79,12 +79,7 @@ namespace OnlineShop.Repositories
 
             modelBuilder.Entity<Producto>()
                 .Property(e => e.PrecioCosto)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Producto>()
-                .Property(e => e.Descontinuado)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasPrecision(19, 4);            
 
             modelBuilder.Entity<Producto>()
                 .HasMany(e => e.Pedido_Producto)

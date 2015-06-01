@@ -48,6 +48,9 @@ namespace OnlineShop.Web.Telerik.Controllers
         public ActionResult editProducto(int id = 0)
         {
             EditProductoViewModel viewModel = new EditProductoViewModel();
+            viewModel = _productoService.ProductoAdminEditInit(id);
+            ViewData["Marcas"] = _marcaService.GetMarcas();
+            ViewData["Categorias"] = _categoriaService.GetCategoria();
             return PartialView("editProductoModal", viewModel);
         }
 

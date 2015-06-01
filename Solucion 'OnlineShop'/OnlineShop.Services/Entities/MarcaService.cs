@@ -16,6 +16,7 @@ namespace OnlineShop.Services.Entities
         private ShopContext _context;
         public MarcaService()
         {
+            this._context = new ShopContext();
             this._marcaRepository = new MarcaRepository(_context);
         }
 

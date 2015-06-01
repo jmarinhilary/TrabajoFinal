@@ -81,7 +81,7 @@
                         isOpen = !wnd ? false : !wnd.element.is(":hidden");
 
                     if (!isOpen) {
-                        var _seetings = { resizable: false, actions: ["Close"], visible: true, position: { left: "20%" , top : "20%"} }
+                        var _seetings = { resizable: false, actions: ["Close"], visible: true, position: { left: "20%" , top : "15%"} }
                         $.extend(_seetings, seetings);
                         showLoading && kendo.ui.progress($(this), showLoading);
                         

@@ -17,6 +17,7 @@ namespace OnlineShop.Services.Entities
 
         public CategoriaService()
         {
+            this._context = new ShopContext();
             this._categoriaRepository = new CategoriaRepository(_context);
         }
 

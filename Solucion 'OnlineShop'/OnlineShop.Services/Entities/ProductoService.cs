@@ -84,14 +84,21 @@ namespace OnlineShop.Services.Entities
             return productoViewModel;
         }
 
-
+        public EditProductoViewModel ProductoAdminEditInit(int id)
+        {
+            EditProductoViewModel viewModel = new EditProductoViewModel();
+            var producto = _productoRepository.Get().Where(x => x.Id == id).FirstOrDefault();
+            Mapper.CreateMap<Producto, EditProductoViewModel>();
+            viewModel = Mapper.Map<EditProductoViewModel>(producto);
+            return viewModel;
+        }
 
         public void Dispose()
         {
             this._productoRepository = null;
+            this._imagenesRepository = null;
             this._shopContext = null;
         }
-
         
     }
 }
