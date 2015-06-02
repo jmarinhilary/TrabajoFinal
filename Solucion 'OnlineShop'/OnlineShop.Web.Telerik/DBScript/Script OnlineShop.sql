@@ -277,7 +277,7 @@ CREATE TABLE [dbo].[Producto](
 	[IdMarca] [int] NULL,
 	[IdCategoria] [int] NULL,
 	[PrecioCosto] [money] NULL,
-	[Descontinuado] [char](1) NULL,
+	[Descontinuado] [bit] NULL,
 	[Sku] [varchar](10) NULL,
  CONSTRAINT [PK__Producto__3214EC07D12376B8] PRIMARY KEY CLUSTERED 
 (
