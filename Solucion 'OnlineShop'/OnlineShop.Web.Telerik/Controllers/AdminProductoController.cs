@@ -36,7 +36,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             return Json(result);
         }
 
-        public ActionResult createProducto() 
+        public ActionResult createProductoModal() 
         { 
             CreateProductoViewModel viewModel = new CreateProductoViewModel();
             ViewData["Marcas"] = _marcaService.GetMarcas();
@@ -44,8 +44,14 @@ namespace OnlineShop.Web.Telerik.Controllers
             return PartialView("createProductoModal", viewModel);
         }
 
+        [HttpPost]
+        public JsonResult createRegistroProducto(CreateProductoViewModel viewModel)
+        {
+            return null;
+        }
+
         
-        public ActionResult editProducto(int id = 0)
+        public ActionResult editProductoModal(int id = 0)
         {
             EditProductoViewModel viewModel = new EditProductoViewModel();
             viewModel = _productoService.ProductoAdminEditInit(id);
@@ -55,7 +61,7 @@ namespace OnlineShop.Web.Telerik.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(EditProductoViewModel viewModel) 
+        public ActionResult EditRegistroProducto(EditProductoViewModel viewModel) 
         {
             return null;
         }
