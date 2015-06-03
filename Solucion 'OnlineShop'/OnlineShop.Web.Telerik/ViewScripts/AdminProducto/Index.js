@@ -13,6 +13,7 @@
             success: function (data) {
                 $("#editarProducto").html(data).OpenKendoPopup({ title: 'Editar Producto', width: "60%", modal: true });
                 $("#toastrNot").click(grabarProducto);
+                $("#editarCerrar").click(CerrarPopUp);
             }
         });
 
@@ -25,8 +26,13 @@
             success: function (data) {
                 $("#crearProducto").html(data).OpenKendoPopup({ title: 'Editar Producto', width: "60%", modal: true });
                 $("#grabarProducto").click(grabarProducto);
+                $("#grabarCerrar").click(CerrarPopUp);
             }
         });
+    };
+
+    var CerrarPopUp = function () {
+        $("#" + $(this).attr("data-div")).data("kendoWindow").close();
     };
 
     var grabarProducto = function () {
@@ -35,8 +41,14 @@
             url: UrlAction.createRegistroProducto,
             type: "POST",
             data: form.serialize(),
-            success: function () {
-
+            success: function (data) {
+                if (data.indexOf("Error") > 0) {
+                    notify("success", data)
+                }
+                else {
+                    notify("warning", data)
+                }
+                
             }
         })
     };

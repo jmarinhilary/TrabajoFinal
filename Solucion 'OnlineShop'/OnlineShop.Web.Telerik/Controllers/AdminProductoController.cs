@@ -8,6 +8,7 @@ using OnlineShop.Services.Entities;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using OnlineShop.Common.ViewModels;
+using OnlineShop.Fx.Util;
 
 
 namespace OnlineShop.Web.Telerik.Controllers
@@ -24,6 +25,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             this._categoriaService = categoriaService;
         }
         public ActionResult Index()
+        
         {
             var productos = _productoService.ProductoAdminInit();
             return View(productos);
@@ -45,9 +47,10 @@ namespace OnlineShop.Web.Telerik.Controllers
         }
 
         [HttpPost]
-        public JsonResult createRegistroProducto(CreateProductoViewModel viewModel)
+        public ActionResult createRegistroProducto(CreateProductoViewModel viewModel)
         {
-            return null;
+            var result =  _productoService.createProducto(viewModel);
+            return Json(new JSResultView(result));
         }
 
         

@@ -99,6 +99,14 @@ namespace OnlineShop.Services.Entities
             this._imagenesRepository = null;
             this._shopContext = null;
         }
-        
+
+
+        public string createProducto(CreateProductoViewModel viewModel)
+        {
+            Mapper.CreateMap<CreateProductoViewModel,Producto>();
+            var producto = Mapper.Map<Producto>(viewModel);
+            var id = _productoRepository.Create(producto);
+            return id != null ? "Se registró el Producto" : "Error al registrar el Producto" ;
+        }
     }
 }

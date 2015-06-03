@@ -51,6 +51,7 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\JSResultView.cs" />
     <Compile Include="Util\MemberExtension.cs" />
     <Compile Include="Util\RegExp.cs" />
   </ItemGroup>

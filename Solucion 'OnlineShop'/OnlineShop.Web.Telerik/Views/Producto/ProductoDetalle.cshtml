@@ -26,7 +26,7 @@
             <img class="img-responsive" src="@Url.Content(@Model.Imagenes.Where(x => x.Tipo == "P").FirstOrDefault().Ruta)" />
         </div>
         <div class="col-md-4">
-
+            @Html.Raw(Model.Descripcion)
         </div>
         <div class="col-md-3">
             <p><h3 class="text-danger">@string.Format("{0:C}", Model.PrecioCosto)</h3></p>
