@@ -1,6 +1,5 @@
 ﻿(function () {
-    $(document).ready(function () {
-        $(".editarModal").click(editProductoModal);
+    $(document).ready(function () {        
         $("#CrearProducto").click(createProductoModal);
     });
 
@@ -12,12 +11,12 @@
             data: { id: _id },
             success: function (data) {
                 $("#editarProducto").html(data).OpenKendoPopup({ title: 'Editar Producto', width: "60%", modal: true });
-                $("#toastrNot").click(grabarProducto);
+                $("#editProducto").click(editarProducto);
                 $("#editarCerrar").click(CerrarPopUp);
             }
-        });
-
+        });            
     };
+
 
     var createProductoModal = function () {
         $.ajax({
@@ -31,6 +30,18 @@
         });
     };
 
+    var imageProductoModal = function () {
+        _id = $(this).attr("data-Id");
+        $.ajax({
+            url: UrlAction.imagenProductoModal,
+            type: "POST",
+            data: { id: _id },
+            success: function (data) {
+                $("#imagenProducto").html(data).OpenKendoPopup({ title: 'Imagen Producto', width: "60%", modal: true })
+            }
+        })
+    };
+
     var CerrarPopUp = function () {
         $("#" + $(this).attr("data-div")).data("kendoWindow").close();
     };
@@ -42,21 +53,39 @@
             type: "POST",
             data: form.serialize(),
             success: function (data) {
-                if (data.indexOf("Error") > 0) {
-                    notify("success", data)
+                if (data.MessageResult.indexOf("Error") > 0) {
+                    notify("success", data.MessageResult)
                 }
                 else {
-                    notify("warning", data)
+                    notify("warning", data.MessageResult)
                 }
-                
+
             }
         })
     };
 
-    //var grabarProducto = function () {
-    //    notify("success", "ok")
-    //}
+    var editarProducto = function () {
+        form = $("#FrmCrearProducto");
+        $.ajax({
+            url: UrlAction.editRegistroProducto,
+            type: "POST",
+            data: form.serialize(),
+            success: function (data) {
+                if (data.MessageResult.indexOf("Error") > 0) {
+                    notify("success", data.MessageResult)
+                }
+                else {
+                    notify("warning", data.MessageResult)
+                }
 
+            }
+        })
+    }
+
+    window.OnDataBound = function () {
+        $(".editarModal").click(editProductoModal);
+        $(".imageModal").click(imageProductoModal);
+    }
 
 
 })()

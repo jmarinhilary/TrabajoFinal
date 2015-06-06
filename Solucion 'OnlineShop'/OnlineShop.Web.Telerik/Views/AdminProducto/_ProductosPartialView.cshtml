@@ -7,13 +7,13 @@
                         .Read("productoRead", "AdminProducto")
                         .PageSize(10)
                 )
+    .Events(events => events.DataBound("OnDataBound"))
     .Columns(columns =>
     {
-        @*columns.Template(@<text></text>).ClientTemplate(
-        "<button type='button' class='btn btn-default btn-sm' data-Id='#: Id#'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button>");*@
         columns.Template(@<text></text>).ClientTemplate(
-        "<a href='javascript:'  class='btn btn-default btn-sm editarModal' role='button' data-Id=#=Id#><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button>"
-                         );
+        "<a href='javascript:'  class='btn btn-default btn-xs editarModal' role='button' data-Id=#=Id#><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button>" +
+        "<a href='javascript:'  class='btn btn-default btn-xs imageModal' role='button' data-Id=#=Id#><span class='glyphicon glyphicon-inbox' aria-hidden='true'></span></button>"
+                         ).Width(65);
         columns.Bound(p => p.Id).Title("ID");
         columns.Bound(p => p.Nombre).Title("NOMBRE");
         columns.Bound(p => p.Cantidad).Title("CANTIDAD");
@@ -29,6 +29,7 @@
                        );
     })
     .Sortable()
+    .Filterable()
 
 
 )

@@ -10,7 +10,7 @@ namespace OnlineShop.Repositories
     {
         int Create(T entity);
         IQueryable<T> Get();
-        void Update(T entity);
+        int Update(T entity);
         void Update(T entity, Expression<Func<T, object>>[] properties, Expression<Func<T, bool>> predicateExpression);
         IQueryable<T> GetQueryable(Expression<Func<T, bool>> predicateExpression);
         void Delete(Expression<Func<T, bool>> predicateExpression);

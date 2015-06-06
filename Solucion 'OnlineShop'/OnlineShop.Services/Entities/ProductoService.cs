@@ -50,6 +50,8 @@ namespace OnlineShop.Services.Entities
         }
 
         public List<ProductoViewModel> GetProductsAdmin()
+        
+        
         {
             var ListaProducto = _productoRepository.Get()
                                         .Select(x => new ProductoViewModel
@@ -93,6 +95,31 @@ namespace OnlineShop.Services.Entities
             return viewModel;
         }
 
+        public string createProducto(CreateProductoViewModel viewModel)
+        {
+            Mapper.CreateMap<CreateProductoViewModel, Producto>();
+            var producto = Mapper.Map<Producto>(viewModel);
+            var id = _productoRepository.Create(producto);
+            return id != null ? "Se registró el Producto" : "Error al registrar el Producto";
+        }
+
+        public string updateProducto(EditProductoViewModel viewModel)
+        {
+            Mapper.CreateMap<EditProductoViewModel, Producto>();
+            var producto = Mapper.Map<Producto>(viewModel);
+            var id = _productoRepository.Update(producto);
+            return id != null ? "Se actualizó el Producto" : "Error al actualizar el Producto";
+        }
+
+        public List<ImagenesViewModel> getImagesbyProduct(int Id)
+        {
+            var imagenes = (from p in _imagenesRepository.Get()
+                           select p).ToList();
+            Mapper.CreateMap<Imagenes, ImagenesViewModel>();
+            return Mapper.Map<List<Imagenes>, List<ImagenesViewModel>>(imagenes);
+        }
+
+
         public void Dispose()
         {
             this._productoRepository = null;
@@ -101,12 +128,6 @@ namespace OnlineShop.Services.Entities
         }
 
 
-        public string createProducto(CreateProductoViewModel viewModel)
-        {
-            Mapper.CreateMap<CreateProductoViewModel,Producto>();
-            var producto = Mapper.Map<Producto>(viewModel);
-            var id = _productoRepository.Create(producto);
-            return id != null ? "Se registró el Producto" : "Error al registrar el Producto" ;
-        }
+        
     }
 }

@@ -24,8 +24,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             this._marcaService = marcaService;
             this._categoriaService = categoriaService;
         }
-        public ActionResult Index()
-        
+        public ActionResult Index()        
         {
             var productos = _productoService.ProductoAdminInit();
             return View(productos);
@@ -65,6 +64,18 @@ namespace OnlineShop.Web.Telerik.Controllers
 
         [HttpPost]
         public ActionResult EditRegistroProducto(EditProductoViewModel viewModel) 
+        {
+            var result = _productoService.updateProducto(viewModel);
+            return null;
+        }
+
+        public ActionResult imagenProductoModal(int id = 0)
+        {
+            var imagenes = _productoService.getImagesbyProduct(id);
+            return PartialView(imagenes);
+        }
+
+        public ActionResult GrabarImagen() 
         {
             return null;
         }

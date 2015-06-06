@@ -52,7 +52,7 @@ namespace OnlineShop.Web.Telerik.Controllers
                     producto.Cantidad += 1;
                     Carrito.Add(producto);
                 }
-                TempData["Mensaje"] = Carrito.LastOrDefault().Nombre + "se agrego a la cesta";
+                TempData["Mensaje"] = (Carrito.LastOrDefault().Nombre + "se agrego a la cesta").Trim();
                 Session["Carrito"] = Carrito;
             }
             return View(Carrito.AsEnumerable());
