@@ -5,6 +5,7 @@ using OnlineShop.Domain;
 using OnlineShop.Repositories;
 using AutoMapper;
 using OnlineShop.Common.ViewModels;
+using OnlineShop.Fx;
 
 namespace OnlineShop.Services.Entities
 {
@@ -111,12 +112,17 @@ namespace OnlineShop.Services.Entities
             return id != null ? "Se actualizó el Producto" : "Error al actualizar el Producto";
         }
 
-        public List<ImagenesViewModel> getImagesbyProduct(int Id)
+        public ImagenesPreviewViewModel getImagesbyProduct(int Id)
         {
             var imagenes = (from p in _imagenesRepository.Get()
-                           select p).ToList();
-            Mapper.CreateMap<Imagenes, ImagenesViewModel>();
-            return Mapper.Map<List<Imagenes>, List<ImagenesViewModel>>(imagenes);
+                            where p.IdProducto == Id
+                            select new { Ruta = p.Ruta,
+                                         Id   = p.Id}).ToList();
+            ImagenesPreviewViewModel viewModel = new ImagenesPreviewViewModel();
+            viewModel.IdProducto = Id;
+            viewModel.Ruta = imagenes.Select(x => string.Format(Constants.ImgFileUpload, x.Ruta.Substring(2, x.Ruta.Length - 2))).ToArray();
+            viewModel.ListaImagenes = imagenes.Select(x => new OptionImages { key = x.Id, caption = x.Ruta, width = "80px", url = "/AdminProducto/DeleteImage" }).ToList();
+            return viewModel;
         }
 
 

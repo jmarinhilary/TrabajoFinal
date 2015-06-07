@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineShop.Common.ViewModels.ImagenesViewModel>
+﻿@model OnlineShop.Common.ViewModels.ImagenesPreviewViewModel
 
 <div class="col-md-11">
     @Html.FileUploadBoostrap("imagenesUpload")
@@ -7,25 +7,34 @@
 
 
 
-<script>
+<script type="text/javascript">
+    debugger;
+    var imgArray = [];
+    var jsonProp = {};
+    jsonProp = @Html.Raw(Json.Encode(Model.ListaImagenes));
+    @foreach (var x in Model.Ruta) {
+        @:imgArray.push("@Html.Raw(x)");
+        }
     $("#imagenesUpload").fileinput({
         uploadUrl: '@Url.Action("GrabarImagen")',
         uploadAsync: true,
         minFileCount: 1,
-        maxFileCount: 5,
+        maxFileCount: 4,
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        enctype: 'multipart/form-data',
+        allowedFileTypes: ['image'],
         overwriteInitial: false,
-        initialPreview: [
-            "<img src='http://placeimg.com/200/150/people/1'>",
-            "<img src='http://placeimg.com/200/150/people/2'>",
-        ],
-        initialPreviewConfig: [
-            { caption: "People-1.jpg", width: "120px", url: "/site/file-delete", key: 1 },
-            { caption: "People-2.jpg", width: "120px", url: "/site/file-delete", key: 2 },
-        ],
-        uploadExtraData: {
-            img_key: "1000",
-            img_keywords: "happy, people",
-        }
+        initialPreview: imgArray,
+        maxFileSize: 2000,
+        initialPreviewConfig: jsonProp,
+        msgSizeTooLarge: "Archivo {name} ({size} KB) excede el tamaño maximo de {maxSize} KB. Intentar de nuevo",
+        msgFilesTooMany: "Numero de Archivos seleccionador para subir ({n}) excede el máximo permitido {m}",
+        msgInvalidFileType: 'Tipo invalido para archivo "{name}". Solo estan permitidos archivos tipo {types}',
+        msgInvalidFileExtension: 'Extensión invalida para archivo {name}. Solo "{extensions} estan permitidos".',
+        dropZoneTitle: 'Soltar las imagenes aquí',
+        browseLabel: 'Seleccionar',
+        removeLabel: 'Borrar',
+        uploadLabel: 'Subir'
     });
 </script>
 

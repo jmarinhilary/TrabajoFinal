@@ -77,6 +77,12 @@ namespace OnlineShop.Web.Telerik.Controllers
 
         public ActionResult GrabarImagen() 
         {
+
+            return null;
+        }
+
+        public ActionResult DeleteImage(int key = 0) 
+        {
             return null;
         }
     }

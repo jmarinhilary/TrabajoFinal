@@ -69,6 +69,10 @@
       <Project>{26FDA740-3DB8-445E-87A6-9CA1E5DD8E9E}</Project>
       <Name>OnlineShop.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Fx\OnlineShop.Fx.csproj">
+      <Project>{782ce005-63aa-400b-bdec-9adb68f12a9d}</Project>
+      <Name>OnlineShop.Fx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineShop.Repositories\OnlineShop.Repositories.csproj">
       <Project>{02bc5d02-a57a-42ce-8e53-16f63b9c48cd}</Project>
       <Name>OnlineShop.Repositories</Name>
