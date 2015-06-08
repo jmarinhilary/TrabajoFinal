@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Entities\CategoriaService.cs" />
     <Compile Include="Entities\ClienteService.cs" />
+    <Compile Include="Entities\ImagenService.cs" />
     <Compile Include="Entities\MarcaService.cs" />
     <Compile Include="Entities\PedidoProductoService.cs" />
     <Compile Include="Entities\PedidoService.cs" />

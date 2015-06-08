@@ -16,7 +16,7 @@
         @:imgArray.push("@Html.Raw(x)");
         }
     $("#imagenesUpload").fileinput({
-        uploadUrl: '@Url.Action("GrabarImagen")',
+        uploadUrl: '@Url.Action("GrabarImagen", new { Id = @Model.IdProducto})',
         uploadAsync: true,
         minFileCount: 1,
         maxFileCount: 4,

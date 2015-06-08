@@ -61,6 +61,15 @@ namespace OnlineShop.Fx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imagenes.
+        /// </summary>
+        public static string CarpetaImagenes {
+            get {
+                return ResourceManager.GetString("CarpetaImagenes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;img src=&apos;{0}&apos; class=&apos;img-responsive&apos;&gt;.
         /// </summary>
         public static string ImgFileUpload {

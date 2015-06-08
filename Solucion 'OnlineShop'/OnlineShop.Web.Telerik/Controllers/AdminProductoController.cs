@@ -9,6 +9,8 @@ using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using OnlineShop.Common.ViewModels;
 using OnlineShop.Fx.Util;
+using System.IO;
+using OnlineShop.Fx;
 
 
 namespace OnlineShop.Web.Telerik.Controllers
@@ -18,11 +20,14 @@ namespace OnlineShop.Web.Telerik.Controllers
         private ProductoService  _productoService;
         private MarcaService _marcaService;
         private CategoriaService _categoriaService;
-        public AdminProductoController(ProductoService productoService, MarcaService marcaService,CategoriaService categoriaService)
+        private ImagenService _imagenService;
+
+        public AdminProductoController(ProductoService productoService, MarcaService marcaService, CategoriaService categoriaService, ImagenService imagenService)
         {
             this._productoService = productoService;
             this._marcaService = marcaService;
             this._categoriaService = categoriaService;
+            this._imagenService = imagenService;
         }
         public ActionResult Index()        
         {
@@ -75,10 +80,49 @@ namespace OnlineShop.Web.Telerik.Controllers
             return PartialView(imagenes);
         }
 
-        public ActionResult GrabarImagen() 
+        public ActionResult GrabarImagen(int Id) 
         {
+            bool isSavedSuccessfully = true;
+            string fileName = "";
+            try
+            {
+                foreach (string item in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[item];
+                    fileName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        ImagenesViewModel viewModel = new ImagenesViewModel();                        
+                        var originalDirectory = new DirectoryInfo(Server.MapPath(@"\"));
+                        string pathString = System.IO.Path.Combine(originalDirectory.ToString(), Constants.CarpetaImagenes);
+                        var fileName1 = Path.GetFileName(file.FileName);
+                        bool isExists = System.IO.Directory.Exists(pathString);
+                        if (!isExists)
+                            System.IO.Directory.CreateDirectory(pathString);
 
-            return null;
+                        viewModel.IdProducto = Id;
+                        viewModel.Ruta = file.FileName;
+
+                        var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                        file.SaveAs(path);
+                        _imagenService.GrabarImagenesProducto(viewModel);
+                        
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                isSavedSuccessfully = false;
+
+            }       
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fileName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }            
         }
 
         public ActionResult DeleteImage(int key = 0) 
