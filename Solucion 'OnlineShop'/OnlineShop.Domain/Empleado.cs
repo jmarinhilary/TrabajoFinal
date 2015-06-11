@@ -9,6 +9,7 @@ namespace OnlineShop.Domain
     [Table("Empleado")]
     public partial class Empleado : EntityBase
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
             Pedido = new HashSet<Pedido>();
@@ -43,6 +44,7 @@ namespace OnlineShop.Domain
 
         public DateTime? FechaCon { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

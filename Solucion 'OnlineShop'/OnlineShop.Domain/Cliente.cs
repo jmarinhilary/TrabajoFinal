@@ -9,6 +9,7 @@ namespace OnlineShop.Domain
     [Table("Cliente")]
     public partial class Cliente : EntityBase
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
             Pedido = new HashSet<Pedido>();
@@ -47,6 +48,7 @@ namespace OnlineShop.Domain
         [StringLength(100)]
         public string NroTarjeta { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

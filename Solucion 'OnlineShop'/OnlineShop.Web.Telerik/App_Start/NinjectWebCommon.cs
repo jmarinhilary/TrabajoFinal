@@ -18,6 +18,7 @@ namespace OnlineShop.Web.Telerik.App_Start
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
     using OnlineShop.Web.Telerik.Models;
+    using OnlineShop.Domain;
     
 
     public static class NinjectWebCommon        

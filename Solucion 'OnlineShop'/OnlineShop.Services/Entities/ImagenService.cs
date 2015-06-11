@@ -25,7 +25,14 @@ namespace OnlineShop.Services.Entities
         {
             viewModel.Ruta = string.Format("~/Imagenes/{0}", viewModel.Ruta);
             viewModel.Estado = "A";
-            viewModel.Tipo = "P";
+            if (_imagenesRepository.Get().Where(x => x.IdProducto == viewModel.IdProducto && x.Tipo == "P").Any())
+            {
+                viewModel.Tipo = "C";
+            }
+            else
+            {
+                viewModel.Tipo = "P";
+            }
             Mapper.CreateMap<ImagenesViewModel, Imagenes>();
             var Imagenes = Mapper.Map<Imagenes>(viewModel);
             var Id = _imagenesRepository.Create(Imagenes);                

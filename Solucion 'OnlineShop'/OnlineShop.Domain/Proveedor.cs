@@ -9,6 +9,7 @@ namespace OnlineShop.Domain
     [Table("Proveedor")]
     public partial class Proveedor : EntityBase
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedor()
         {
             Producto_Proveedor = new HashSet<Producto_Proveedor>();
@@ -39,6 +40,7 @@ namespace OnlineShop.Domain
         [StringLength(100)]
         public string Email { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Proveedor> Producto_Proveedor { get; set; }
     }
 }

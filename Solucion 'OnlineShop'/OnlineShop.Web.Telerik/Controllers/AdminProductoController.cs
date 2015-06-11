@@ -125,9 +125,10 @@ namespace OnlineShop.Web.Telerik.Controllers
             }            
         }
 
+        [HttpPost]
         public ActionResult DeleteImage(int key = 0) 
         {
-            return null;
+            return View();
         }
     }
 }

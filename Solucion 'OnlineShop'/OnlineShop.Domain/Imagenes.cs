@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Domain
+namespace OnlineShop.Domain
 {
     using System;
     using System.Collections.Generic;

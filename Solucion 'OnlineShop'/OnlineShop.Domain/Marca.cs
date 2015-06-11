@@ -9,6 +9,7 @@ namespace OnlineShop.Domain
     [Table("Marca")]
     public partial class Marca : EntityBase
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Marca()
         {
             Producto = new HashSet<Producto>();
@@ -24,6 +25,7 @@ namespace OnlineShop.Domain
         [StringLength(100)]
         public string Imagen { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Producto { get; set; }
     }
 }

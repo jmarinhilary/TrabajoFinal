@@ -1,8 +1,10 @@
-using System.Data.Entity;
-using OnlineShop.Domain;
-
-namespace OnlineShop.Repositories
+namespace OnlineShop.Domain
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
     public partial class ShopContext : DbContext
     {
         public ShopContext()
@@ -14,6 +16,7 @@ namespace OnlineShop.Repositories
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<EstadoPedido> EstadoPedido { get; set; }
+        public virtual DbSet<Imagenes> Imagenes { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
         public virtual DbSet<MediodePago> MediodePago { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
@@ -21,7 +24,6 @@ namespace OnlineShop.Repositories
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Producto_Proveedor> Producto_Proveedor { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
-        public virtual DbSet<Imagenes> Imagenes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -45,6 +47,18 @@ namespace OnlineShop.Repositories
                 .HasMany(e => e.Pedido)
                 .WithOptional(e => e.EstadoPedido)
                 .HasForeignKey(e => e.IdEstadoPed);
+
+            modelBuilder.Entity<Imagenes>()
+                .Property(e => e.Ruta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Imagenes>()
+                .Property(e => e.Estado)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Imagenes>()
+                .Property(e => e.Tipo)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Marca>()
                 .HasMany(e => e.Producto)
@@ -79,7 +93,16 @@ namespace OnlineShop.Repositories
 
             modelBuilder.Entity<Producto>()
                 .Property(e => e.PrecioCosto)
-                .HasPrecision(19, 4);            
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Producto>()
+                .Property(e => e.Sku)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Producto>()
+                .HasMany(e => e.Imagenes)
+                .WithOptional(e => e.Producto)
+                .HasForeignKey(e => e.IdProducto);
 
             modelBuilder.Entity<Producto>()
                 .HasMany(e => e.Pedido_Producto)
