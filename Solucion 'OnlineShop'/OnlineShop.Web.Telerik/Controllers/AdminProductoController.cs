@@ -121,7 +121,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             }
             else
             {
-                return Json(new { Message = "Error in saving file" });
+                return Json(new { Message = "Error en grabar el Parametro" });
             }            
         }
 

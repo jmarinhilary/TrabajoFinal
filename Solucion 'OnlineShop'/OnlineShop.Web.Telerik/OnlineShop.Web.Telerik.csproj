@@ -940,6 +940,7 @@
     <Content Include="Views\AdminProducto\createProductoModal.cshtml" />
     <Content Include="Views\AdminProducto\imagenProductoModal.cshtml" />
     <Content Include="Views\AdminProducto\DeleteImage.cshtml" />
+    <Content Include="Views\Shared\_Market.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
