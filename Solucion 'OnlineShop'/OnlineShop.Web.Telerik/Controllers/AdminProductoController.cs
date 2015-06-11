@@ -117,7 +117,7 @@ namespace OnlineShop.Web.Telerik.Controllers
             }       
             if (isSavedSuccessfully)
             {
-                return Json(new { Message = fileName });
+                return Json(new { Message = fileName, parametro = fileName });
             }
             else
             {
