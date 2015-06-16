@@ -50,9 +50,7 @@ namespace OnlineShop.Services.Entities
             return viewModel;
         }
 
-        public List<ProductoViewModel> GetProductsAdmin()
-        
-        
+        public List<ProductoViewModel> GetProductsAdmin()       
         {
             var ListaProducto = _productoRepository.Get()
                                         .Select(x => new ProductoViewModel

@@ -59,5 +59,14 @@ namespace OnlineShop.Fx {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} se agrego a la cesta.
+        /// </summary>
+        public static string AgregarCesta {
+            get {
+                return ResourceManager.GetString("AgregarCesta", resourceCulture);
+            }
+        }
     }
 }

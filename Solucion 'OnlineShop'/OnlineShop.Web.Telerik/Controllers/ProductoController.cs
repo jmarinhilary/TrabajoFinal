@@ -7,6 +7,7 @@ using OnlineShop.Services.Entities;
 using OnlineShop.Common.ViewModels;
 using System.Net;
 using System.Net.Http;
+using OnlineShop.Fx;
 
 namespace OnlineShop.Web.Telerik.Controllers
 {
@@ -52,7 +53,7 @@ namespace OnlineShop.Web.Telerik.Controllers
                     producto.Cantidad += 1;
                     Carrito.Add(producto);
                 }
-                TempData["Mensaje"] = (Carrito.LastOrDefault().Nombre + "se agrego a la cesta").Trim();
+                TempData["Mensaje"] = string.Format(Messages.AgregarCesta, Carrito.LastOrDefault().Nombre.Trim());
                 Session["Carrito"] = Carrito;
             }
             return View(Carrito.AsEnumerable());
