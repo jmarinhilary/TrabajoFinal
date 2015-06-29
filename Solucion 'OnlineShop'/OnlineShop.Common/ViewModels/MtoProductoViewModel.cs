@@ -1,4 +1,5 @@
-﻿using OnlineShop.Fx.Util;
+﻿using OnlineShop.Fx;
+using OnlineShop.Fx.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,13 +25,19 @@ namespace OnlineShop.Common.ViewModels
     public class CreateProductoViewModel
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
+        [Display(Name = "Nombre de Producto")]
         public string Nombre { get; set; }
 
         [AllowHtml]
         [Display(Name = "Descripción")]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public string Descripcion { get; set; }
 
+        [StringLength(9, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoNumericoMaximoLongitud")]
         [RegularExpression(RegExp.OnlyNumbers)]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public int? Stock { get; set; }
 
         [Display(Name = "Marca")]
@@ -39,8 +46,13 @@ namespace OnlineShop.Common.ViewModels
         [Display(Name = "Categoría")]
         public int? IdCategoria { get; set; }
         public int? PrecioCostoIdCategoria { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
+        [Display(Name = "Precio al Público")]
         public decimal? PrecioCosto { get; set; }
         public bool Descontinuado { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public string Sku { get; set; }
 
     }
@@ -49,11 +61,18 @@ namespace OnlineShop.Common.ViewModels
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
+        [Display(Name = "Nombre de Producto")]
         public string Nombre { get; set; }  
 
         [Display(Name="Descripción")]
-        [AllowHtml]
+        [AllowHtml]        
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public string Descripcion { get; set; }
+
+        [StringLength(9, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoNumericoMaximoLongitud")]
+        [RegularExpression(RegExp.OnlyNumbers)]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public int? Stock { get; set; }
 
         [Display(Name="Marca")]
@@ -62,6 +81,9 @@ namespace OnlineShop.Common.ViewModels
         [Display(Name="Categoría")]
         public int? IdCategoria { get; set; }
         public int? PrecioCostoIdCategoria { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
+        [Display(Name = "Precio al Público")]
         public decimal? PrecioCosto { get; set; }
         public bool Descontinuado { get; set; }
         public string Sku { get; set; }

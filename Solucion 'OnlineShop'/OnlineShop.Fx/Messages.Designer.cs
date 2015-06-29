@@ -68,5 +68,23 @@ namespace OnlineShop.Fx {
                 return ResourceManager.GetString("AgregarCesta", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El campo {0} debe tener máximo {1} caracteres.
+        /// </summary>
+        public static string CampoNumericoMaximoLongitud {
+            get {
+                return ResourceManager.GetString("CampoNumericoMaximoLongitud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} es obligatorio.
+        /// </summary>
+        public static string CampoRequeridoCustom {
+            get {
+                return ResourceManager.GetString("CampoRequeridoCustom", resourceCulture);
+            }
+        }
     }
 }

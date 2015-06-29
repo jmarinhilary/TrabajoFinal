@@ -15,6 +15,7 @@ using OnlineShop.Fx;
 
 namespace OnlineShop.Web.Telerik.Controllers
 {
+    
     public class AdminProductoController : Controller
     {
         private ProductoService  _productoService;
@@ -68,7 +69,7 @@ namespace OnlineShop.Web.Telerik.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditRegistroProducto(EditProductoViewModel viewModel) 
+        public ActionResult editRegistroProducto(EditProductoViewModel viewModel) 
         {
             var result = _productoService.updateProducto(viewModel);
             return null;

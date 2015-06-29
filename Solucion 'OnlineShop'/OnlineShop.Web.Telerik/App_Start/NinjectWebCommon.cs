@@ -75,6 +75,11 @@ namespace OnlineShop.Web.Telerik.App_Start
                     m => HttpContext.Current.GetOwinContext().Authentication
                     ).InRequestScope();
 
+
+                //kernel.Bind<RoleManager<ApplicationUser>>().ToSelf().InRequestScope();
+                //kernel.Bind(o => o.FromAssemblyContaining<PlayListService>()
+                //    .SelectAllClasses().BindAllInterfaces());
+
                 kernel.Bind<IRoleStore<IdentityRole, string>>()
                     .To<RoleStore<IdentityRole>>()
                     .InRequestScope()

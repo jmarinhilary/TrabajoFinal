@@ -25,8 +25,9 @@ namespace OnlineShop.Web.Telerik
                       "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/common").Include(
-                      "~/Scripts/CommonUI.js"
-                
+                      "~/Scripts/CommonUI.js",
+                      "~/Scripts/Validation.js",
+                      "~/Scripts/CommonUI.CurrencyFormat.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/KendoJs").Include(

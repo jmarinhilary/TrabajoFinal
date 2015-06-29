@@ -120,4 +120,10 @@
   <data name="AgregarCesta" xml:space="preserve">
     <value>{0} se agrego a la cesta</value>
   </data>
+  <data name="CampoNumericoMaximoLongitud" xml:space="preserve">
+    <value>El campo {0} debe tener máximo {1} caracteres</value>
+  </data>
+  <data name="CampoRequeridoCustom" xml:space="preserve">
+    <value>{0} es obligatorio</value>
+  </data>
 </root>

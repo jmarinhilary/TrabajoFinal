@@ -1,45 +1,46 @@
 ﻿@model OnlineShop.Common.ViewModels.EditProductoViewModel
 <div class="col-md-10">
-    @using (Html.BeginForm("Edit", "AdminProducto", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Edit", "AdminProducto", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "FrmEditarProducto" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary("", new { @class = "text-danger" })
         @Html.HiddenFor(m => m.Id)
         <div class="form-group">
             @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
                 @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control " })
-                @Html.ValidationMessageFor(m => m.Nombre)
+                @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Stock, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
-                @Html.TextBoxFor(m => m.Stock, new { @class = "form-control " })
-                @Html.ValidationMessageFor(m => m.Stock)
+                @Html.TextBoxFor(m => m.Stock, new { @class = "form-control numeric" })
+                @Html.ValidationMessageFor(m => m.Stock, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.IdMarca, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
-                @Html.DropDownListFor(m => m.IdMarca, 
-                                           new SelectList((IEnumerable<OnlineShop.Common.ViewModels.MarcaViewModel>)ViewData["Marcas"], "Id", "Nombre", Model.IdMarca), 
+                @Html.DropDownListFor(m => m.IdMarca,
+                                           new SelectList((IEnumerable<OnlineShop.Common.ViewModels.MarcaViewModel>)ViewData["Marcas"], "Id", "Nombre", Model.IdMarca),
                                            new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.IdMarca)
+                @Html.ValidationMessageFor(m => m.IdMarca, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.IdCategoria, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
-                @Html.DropDownListFor(m => m.IdCategoria, new SelectList((IEnumerable<OnlineShop.Common.ViewModels.CategoriaViewModel>)ViewData["Categorias"], "Id", "Nombre"), new { @class = "form-control " })
-                @Html.ValidationMessageFor(m => m.IdCategoria)
+                @Html.DropDownListFor(m => m.IdCategoria,
+                                           new SelectList((IEnumerable<OnlineShop.Common.ViewModels.CategoriaViewModel>)ViewData["Categorias"], "Id", "Nombre"),
+                                           new { @class = "form-control " })
+                @Html.ValidationMessageFor(m => m.IdCategoria, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.PrecioCosto, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
-                @Html.TextBoxFor(m => m.PrecioCosto, new { @class = "form-control " })
-                @Html.ValidationMessageFor(m => m.PrecioCosto)
+                @Html.TextBoxFor(m => m.PrecioCosto, new { @class = "form-control currency" })
+                @Html.ValidationMessageFor(m => m.PrecioCosto, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -53,14 +54,14 @@
             @Html.LabelFor(m => m.Sku, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
                 @Html.TextBoxFor(m => m.Sku, new { @class = "form-control " })
-                @Html.ValidationMessageFor(m => m.Sku)
+                @Html.ValidationMessageFor(m => m.Sku, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-2 control-label" })
             <div class="col-md-8 col-xs-10">
                 @(Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control " }))
-                @Html.ValidationMessageFor(m => m.Descripcion)
+                @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -78,5 +79,7 @@
         $("#Descripcion").kendoEditor({
             encoded: false
         });
+        setCurrencyFormat();
+        window.update();
     });
 </script>

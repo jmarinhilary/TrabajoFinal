@@ -1,7 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
+using Microsoft.Owin;
 
-[assembly: OwinStartupAttribute(typeof(OnlineShop.Web.Telerik.Startup))]
 namespace OnlineShop.Web.Telerik
 {
     public partial class Startup
@@ -9,6 +8,7 @@ namespace OnlineShop.Web.Telerik
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
     }
 }
