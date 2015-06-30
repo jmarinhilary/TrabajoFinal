@@ -37,7 +37,8 @@ namespace OnlineShop.Web.Telerik
                 "~/Scripts/kendo/2015.1.318/kendo.all.min.js",
                 "~/Scripts/kendo/2015.1.318/kendo.aspnetmvc.min.js",
                 "~/Scripts/kendo.modernizr.custom.js",
-                "~/Scripts/fileinput.min.js"
+                "~/Scripts/fileinput.min.js",
+                "~/Scripts/jquery.signalR-2.2.0.min.js"
                 ));
 
 

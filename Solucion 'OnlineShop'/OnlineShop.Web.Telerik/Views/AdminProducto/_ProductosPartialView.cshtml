@@ -6,6 +6,7 @@
     .DataSource(ds => ds.Ajax()
                         .Read("productoRead", "AdminProducto")
                         .PageSize(10)
+                        
                 )
     .Events(events => events.DataBound("OnDataBound"))
     .Columns(columns =>

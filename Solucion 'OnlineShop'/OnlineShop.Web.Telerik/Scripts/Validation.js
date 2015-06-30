@@ -275,8 +275,8 @@
                 var isElemValid = $form.validate().element($(this));
                 if (isElemValid != null) {
                     valid = valid & isElemValid;
-                    if (valid == false)
-                        console.log($(this));
+                    //if (valid == false)
+                    //    console.log($(this));
                 }
             }
         });

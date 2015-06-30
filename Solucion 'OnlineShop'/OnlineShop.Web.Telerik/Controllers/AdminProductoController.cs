@@ -16,6 +16,7 @@ using OnlineShop.Fx;
 namespace OnlineShop.Web.Telerik.Controllers
 {
     
+    [Authorize(Roles="Admin")]
     public class AdminProductoController : Controller
     {
         private ProductoService  _productoService;
