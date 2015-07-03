@@ -22,8 +22,7 @@ namespace OnlineShop.Services.Entities
 
         public IEnumerable<MarcaViewModel> GetMarcas()
         {
-            var Marcas = _marcaRepository.Get();
-            Mapper.CreateMap<Marca, MarcaViewModel>();
+            var Marcas = _marcaRepository.Get();            
             return Mapper.Map<IEnumerable<Marca>, IEnumerable<MarcaViewModel>>(Marcas);
         }
 
@@ -31,6 +30,18 @@ namespace OnlineShop.Services.Entities
         {
             this._context = null;
             this._marcaRepository = null;
+        }
+
+        public void ActualizarMarca(MarcaViewModel marcaViewModel)
+        {
+            var marca = Mapper.Map<MarcaViewModel, Marca>(marcaViewModel);
+            _marcaRepository.Update(marca);
+        }
+
+        public void InsertarMarca(MarcaViewModel marcaViewModel)
+        {
+            var marca = Mapper.Map<MarcaViewModel, Marca>(marcaViewModel);
+            _marcaRepository.Create(marca);
         }
     }
 }

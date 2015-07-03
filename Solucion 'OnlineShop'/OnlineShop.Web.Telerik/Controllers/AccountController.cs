@@ -160,18 +160,15 @@ namespace OnlineShop.Web.Telerik.Controllers
                 {
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    //result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
+                    result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
                     _clienteService = new ClienteService();
                     _clienteService.Create(
                         new ClienteViewModel
                         {
-                            Nombre = user.Email,
+                            Nombre = model.FirstName,
                             Email = user.Email,
-                            ApellidoP = user.Email
-                        });
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
+                            ApellidoP = model.LastName,
+                        });                   
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");

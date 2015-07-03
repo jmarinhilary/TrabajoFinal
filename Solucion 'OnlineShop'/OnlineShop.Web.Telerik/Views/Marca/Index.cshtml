@@ -1,0 +1,66 @@
+﻿<div ng-controller="marcaController" ng-cloak>
+    <h2>{{titulo}}</h2>
+    <div class="form-group">
+        <label class="col-md-2">Busqueda:</label>
+        <div class="col-md-8">
+            <input type="text" value="Name" class="form-control" ng-model="FilterByFirstName" />
+        </div>
+        <div class="col-sm-4">
+            <input type="button" value="Agregar" class="btn btn-sm btn-default" ng-click="add()" />
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+                <td>Imagen</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in lista | filter:FilterByFirstName ">
+                <td>{{item.Id}}</td>
+                <td>{{item.Nombre}}</td>
+                <td>{{item.Descripcion}}</td>
+                <td>{{item.Imagen}}</td>
+                <td>
+                    <input type="button" value="Editar" class="btn btn-sm btn-info" ng-click="edit(item)" />
+                    @*<input type="button" value="Delete" class="btn btn-sm" ng-click="delete(item)" />*@
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+    <div ng-show="divMarcaMod">
+        <p>{{Operacion}} Marca</p>
+        <table class="table">
+            <tr>
+                <td>
+                    <input type="text" style="width:20px;" disabled="disabled" ng-model="Id" />
+                </td>
+                <td>
+                    <input type="text" @*style="width:94px;"*@ class="form-control" ng-model="Nombre" />
+                </td>
+                <td>
+                    <input type="text" @*style="width:94px;"*@ class="form-control" ng-model="Descripcion" />
+                </td>
+                <td>
+                    <input type="text" @*style="width:94px;"*@ class="form-control" ng-model="Imagen" />
+                </td>
+                <td colspan="2">
+                    <input type="button" value="Grabar" class="btn btn-sm btn-success" ng-click="Save()" />
+                    <input type="button" value="Cancelar" class="btn btn-sm btn-danger" ng-click="Cancel()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+

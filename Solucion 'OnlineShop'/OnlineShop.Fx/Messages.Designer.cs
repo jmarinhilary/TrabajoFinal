@@ -86,5 +86,50 @@ namespace OnlineShop.Fx {
                 return ResourceManager.GetString("CampoRequeridoCustom", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El registro se guardó satisfactoriamente.
+        /// </summary>
+        public static string InsercionCorrecta {
+            get {
+                return ResourceManager.GetString("InsercionCorrecta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El registro no se guardó satisfactoriamente.
+        /// </summary>
+        public static string InsercionIncorrecta {
+            get {
+                return ResourceManager.GetString("InsercionIncorrecta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se Actualizó satisfactoriamente.
+        /// </summary>
+        public static string MensajeActualizarSatisf {
+            get {
+                return ResourceManager.GetString("MensajeActualizarSatisf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se Actualizó.
+        /// </summary>
+        public static string MensajeActualzarError {
+            get {
+                return ResourceManager.GetString("MensajeActualzarError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El campo {0} debe ser entre {1} y {2}.
+        /// </summary>
+        public static string StockCustom {
+            get {
+                return ResourceManager.GetString("StockCustom", resourceCulture);
+            }
+        }
     }
 }

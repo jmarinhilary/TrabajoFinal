@@ -55,19 +55,19 @@
     };
 
     var grabarProducto = function () {
-        $form = $("#FrmCrearProducto");        
-        if ($form.IsValidForm())
+        form = $("#FrmCrearProducto");        
+        if (form.IsValidForm())
         {
             $.ajax({
                 url: UrlAction.createRegistroProducto,
                 type: "POST",
-                data: $form.serialize(),
+                data: form.serialize(),
                 success: function (data) {
                     if (data.MessageResult.indexOf("Error") > 0) {
-                        notify("success", data.MessageResult)
+                        notify("warning", data.MessageResult)
                     }
                     else {
-                        notify("warning", data.MessageResult)
+                        notify("success", data.MessageResult)
                     }
 
                 }
@@ -76,19 +76,19 @@
     };
 
     var editarProducto = function () {
-        $form = $("#FrmEditarProducto");
-        if ($form.IsValidForm())
+        form = $("#FrmEditarProducto");
+        if (form.IsValidForm())
         {
             $.ajax({
                 url: UrlAction.editRegistroProducto,
                 type: "POST",
-                data: $form.serialize(),
+                data: form.serialize(),
                 success: function (data) {
                     if (data.MessageResult.indexOf("Error") > 0) {
-                        notify("success", data.MessageResult)
+                        notify("warning", data.MessageResult)
                     }
                     else {
-                        notify("warning", data.MessageResult)
+                        notify("success", data.MessageResult)
                     }
 
                 }

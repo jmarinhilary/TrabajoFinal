@@ -35,7 +35,7 @@ namespace OnlineShop.Common.ViewModels
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public string Descripcion { get; set; }
 
-        [StringLength(9, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoNumericoMaximoLongitud")]
+        [Range(1, 999, ErrorMessageResourceName = "StockCustom", ErrorMessageResourceType = typeof(Messages))]
         [RegularExpression(RegExp.OnlyNumbers)]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public int? Stock { get; set; }
@@ -70,7 +70,8 @@ namespace OnlineShop.Common.ViewModels
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public string Descripcion { get; set; }
 
-        [StringLength(9, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoNumericoMaximoLongitud")]
+        //[StringLength(9, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoNumericoMaximoLongitud")]
+        [Range(1, 999, ErrorMessageResourceName = "StockCustom", ErrorMessageResourceType = typeof(Messages))]
         [RegularExpression(RegExp.OnlyNumbers)]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
         public int? Stock { get; set; }

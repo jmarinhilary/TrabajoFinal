@@ -88,23 +88,20 @@ namespace OnlineShop.Services.Entities
         public EditProductoViewModel ProductoAdminEditInit(int id)
         {
             EditProductoViewModel viewModel = new EditProductoViewModel();
-            var producto = _productoRepository.Get().Where(x => x.Id == id).FirstOrDefault();
-            Mapper.CreateMap<Producto, EditProductoViewModel>();
+            var producto = _productoRepository.Get().Where(x => x.Id == id).FirstOrDefault();            
             viewModel = Mapper.Map<EditProductoViewModel>(producto);
             return viewModel;
         }
 
         public string createProducto(CreateProductoViewModel viewModel)
-        {
-            Mapper.CreateMap<CreateProductoViewModel, Producto>();
+        {            
             var producto = Mapper.Map<Producto>(viewModel);
             var id = _productoRepository.Create(producto);
             return id != null ? "Se registró el Producto" : "Error al registrar el Producto";
         }
 
         public string updateProducto(EditProductoViewModel viewModel)
-        {
-            Mapper.CreateMap<EditProductoViewModel, Producto>();
+        {            
             var producto = Mapper.Map<Producto>(viewModel);
             var id = _productoRepository.Update(producto);
             return id != null ? "Se actualizó el Producto" : "Error al actualizar el Producto";
