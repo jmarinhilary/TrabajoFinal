@@ -9,25 +9,24 @@
             @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Busqueda de Productos</h4>
+                <h3>Mantenimiento de Productos</h3>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(m => m.SeachCriteria, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.SeachCriteria, new { @class = "form-control" })
-                    </div>
+                   
                 </div>                                
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="button" value="Busqueda" class="btn btn-default" />
-                        <input type="button" value="Crear" id="CrearProducto" class="btn btn-default" />
+                    <label class="control-label">
+                        Creación de Productos
+                    </label>
+                    <div class="col-md-offset-2 col-md-10">                   
+                        <input type="button" value="Crear" id="CrearProducto" class="btn btn-primary" />
                     </div>
                 </div>                
             }
         </section>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12" id="ProductoGrid">
         @Html.Partial("_ProductosPartialView", Model)
     </div>
 </div>
@@ -44,7 +43,8 @@
         editRegistroProducto: '@Url.Action("editRegistroProducto")',
         createProductoModal: '@Url.Action("createProductoModal")',
         createRegistroProducto: '@Url.Action("createRegistroProducto")',
-        imagenProductoModal: '@Url.Action("imagenProductoModal")'
+        imagenProductoModal: '@Url.Action("imagenProductoModal")',
+        GetProducts: '@Url.Action("_ProductosPartialView")'
     }
 
 </script>

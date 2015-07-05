@@ -20,7 +20,10 @@ namespace OnlineShop.Common.ViewModels
 
         public int? IdMarca { get; set; }
 
+        public string Marca { get; set; }
+
         public int? IdCategoria { get; set; }
+        public string Categoria { get; set; }
 
         public decimal? PrecioCosto { get; set; }
 

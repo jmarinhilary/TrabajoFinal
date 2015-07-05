@@ -44,6 +44,24 @@ namespace OnlineShop.Web.Telerik.Controllers
             return Json(result);
         }
 
+        public PartialViewResult _ProductosPartialView()
+        {
+            var productos = _productoService.ProductoAdminInit();
+            return PartialView(productos);
+        }
+
+        public ActionResult GetNombreFilter()
+        {
+            var productos = _productoService.GetProductsAdmin();
+            return Json(productos.OrderBy(o => o.Nombre).Select(e => e.Nombre).Distinct(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetMarcaFilter()
+        {
+            var productos = _productoService.GetProductsAdmin();
+            return Json(productos.OrderBy(o => o.Marca).Where(x => x.Marca != null).Select(e => e.Marca).Distinct(), JsonRequestBehavior.AllowGet);
+        }        
+
         public ActionResult createProductoModal() 
         { 
             CreateProductoViewModel viewModel = new CreateProductoViewModel();

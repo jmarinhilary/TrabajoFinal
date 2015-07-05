@@ -58,7 +58,11 @@ namespace OnlineShop.Services.Entities
                                         {
                                             Id = x.Id,
                                             Nombre = x.Nombre,
-                                            Cantidad = 0
+                                            Stock = x.Stock,
+                                            Marca = x.Marca.Nombre,
+                                            Categoria = x.Categoria.Nombre,
+                                            PrecioCosto = x.PrecioCosto,
+                                            Cantidad = x.Imagenes.Count()
                                         }).ToList();
             return ListaProducto;
         }

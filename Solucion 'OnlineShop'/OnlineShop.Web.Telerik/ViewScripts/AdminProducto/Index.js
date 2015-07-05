@@ -3,6 +3,17 @@
         $("#CrearProducto").click(createProductoModal);
     });
 
+
+    var refreshGrid = function () {        
+        $.ajax({
+            url: UrlAction.GetProducts,
+            type: "POST",
+            success: function (data) {
+                $("#ProductoGrid").html(data)
+            }
+        })
+    }
+
     var editProductoModal = function () {
         _id = $(this).attr("data-Id");
         $.ajax({
@@ -52,12 +63,17 @@
 
     var CerrarPopUp = function () {
         $("#" + $(this).attr("data-div")).data("kendoWindow").close();
+        $('html, body').stop().animate({ scrollTop: 0 });
     };
+
+    var Close = function (Id) {
+        $(Id).data("kendoWindow").close();
+        $('html, body').stop().animate({ scrollTop: 0 });
+    }
 
     var grabarProducto = function () {
         form = $("#FrmCrearProducto");        
-        if (form.IsValidForm())
-        {
+        if (form.IsValidForm()) {
             $.ajax({
                 url: UrlAction.createRegistroProducto,
                 type: "POST",
@@ -69,9 +85,15 @@
                     else {
                         notify("success", data.MessageResult)
                     }
-
+                    Close("#crearProducto");
+                    refreshGrid();
                 }
             });
+            
+        }
+        else
+        {
+            alerta("Falta Llenar Campos");
         }
     };
 
@@ -90,9 +112,13 @@
                     else {
                         notify("success", data.MessageResult)
                     }
-
+                    Close("#editarProducto");
+                    refreshGrid();
                 }
             })
+        }
+        else {
+            alerta("Falta Llenar Campos");
         }
     }
 

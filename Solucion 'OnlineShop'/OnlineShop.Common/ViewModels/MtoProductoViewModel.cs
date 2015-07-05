@@ -48,7 +48,7 @@ namespace OnlineShop.Common.ViewModels
         public int? PrecioCostoIdCategoria { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "CampoRequeridoCustom")]
-        [Display(Name = "Precio al Público")]
+        [Display(Name = "Precio sin IGV")]
         public decimal? PrecioCosto { get; set; }
         public bool Descontinuado { get; set; }
 
