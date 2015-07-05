@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OnlineShop.Common.ViewModels;
+using AutoMapper;
 
 namespace OnlineShop.Web.Test.Services
 {
@@ -17,9 +19,8 @@ namespace OnlineShop.Web.Test.Services
     public class productoService
     {
 
-        private IRepository<Producto> playlistRepositoryStub;
-        private IRepository<Imagenes> customerRepositoryStub;
-        private IRepository<ImagesRepositoryStub> trackRepositoryStub;
+        private IRepository<Producto> ProductsRepositoryStub;
+        private IRepository<Imagenes> ImagesRepositoryStub;       
         private ProductoService ProductsService;
 
         [SetUp]
@@ -41,7 +42,7 @@ namespace OnlineShop.Web.Test.Services
 
         [Test]
         public void GetProducts_WithImages() 
-        {           
+        {
             ProductsRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Producto>(
                 new List<Producto>(){
                     new Producto {Id = 1,Nombre = "Laptop HP", IdCategoria = 2 }
@@ -52,15 +53,47 @@ namespace OnlineShop.Web.Test.Services
                     new Imagenes{ Id =1, Ruta = "~/Imagenes/jgh_1.jpg", IdProducto=1, Estado = "A", Tipo = "P" }
             }));
             var productsList = ProductsService.GetProducts();
-            productsList.Should().NotBeEmpty();
+            productsList.Should().NotBeNullOrEmpty();
         }
 
         [Test]
-        public void GetProducts_Initial() 
+        public void GetProduct_ForEdit()
         {
-            var ProductsRepositoryStub = MockRepository.GenerateMock<IRepository<Producto>>();
-            var ImagesRepositoryStub = MockRepository.GenerateMock<IRepository<Imagenes>>();
-            var ProductsService = new ProductoService(ProductsRepositoryStub, ImagesRepositoryStub); 
+            ProductsRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Producto>(
+                new List<Producto>(){
+                    new Producto {Id = 1,Nombre = "Laptop HP", IdCategoria = 2 }
+                }));
+            Mapper.CreateMap<Producto, EditProductoViewModel>();
+            var product = ProductsService.ProductoAdminEditInit(1);
+            product.Should().NotBeNull();
+        }
+
+        [Test]
+        public void CreateProductSuccess()
+        {
+            CreateProductoViewModel viewModel = new CreateProductoViewModel
+            {
+                Nombre = "Laptop hp ",
+                Sku = "45552",
+                PrecioCosto = 1500
+            };
+            Mapper.CreateMap<CreateProductoViewModel, Producto>();
+            var product = ProductsService.createProducto(viewModel);
+            Assert.AreEqual("Se registró el Producto", product);
+        }
+
+        [Test]
+        public void ErrorCreateProduct()
+        {
+            CreateProductoViewModel viewModel = new CreateProductoViewModel
+            {
+                Nombre = "Laptop hp ",
+                Sku = "45552",
+                PrecioCosto = 1500
+            };
+            Mapper.CreateMap<CreateProductoViewModel, Producto>();
+            var product = ProductsService.createProducto(viewModel);
+            Assert.AreNotEqual("Error al registrar el Producto", product);
         }
 
 

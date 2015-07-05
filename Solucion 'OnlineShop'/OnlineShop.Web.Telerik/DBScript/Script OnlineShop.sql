@@ -3,6 +3,7 @@ SCRIPT PARA PROYECTO WEB DE CURSO CIBERTEC ADVANCED WEB DEVELOPER
 CREADO POR : JOHN MARIN HILARY
 FECHA : 23/03/2015
 VERSION : 1.0
+SITIO : http://jmarinhilary-001-site1.smarterasp.net/
 ******************************************************************/	
 USE master
 GO
