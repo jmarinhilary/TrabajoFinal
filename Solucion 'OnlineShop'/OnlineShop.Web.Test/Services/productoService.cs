@@ -16,13 +16,32 @@ namespace OnlineShop.Web.Test.Services
     [TestFixture]
     public class productoService
     {
+
+        private IRepository<Producto> playlistRepositoryStub;
+        private IRepository<Imagenes> customerRepositoryStub;
+        private IRepository<ImagesRepositoryStub> trackRepositoryStub;
+        private ProductoService ProductsService;
+
+        [SetUp]
+        public void Setup()
+        {
+            ProductsRepositoryStub = MockRepository.GenerateMock<IRepository<Producto>>();
+            ImagesRepositoryStub = MockRepository.GenerateMock<IRepository<Imagenes>>();
+            ProductsService = new ProductoService(ProductsRepositoryStub, ImagesRepositoryStub);            
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            ProductsRepositoryStub = null;
+            ImagesRepositoryStub = null;
+            ProductsService = null;            
+        }
+        
+
         [Test]
         public void GetProducts_WithImages() 
-        {
-            var ProductsRepositoryStub = MockRepository.GenerateMock<IRepository<Producto>>();
-            var ImagesRepositoryStub = MockRepository.GenerateMock<IRepository<Imagenes>>();
-            var ProductsService = new ProductoService(ProductsRepositoryStub, ImagesRepositoryStub);
-            
+        {           
             ProductsRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Producto>(
                 new List<Producto>(){
                     new Producto {Id = 1,Nombre = "Laptop HP", IdCategoria = 2 }
@@ -34,6 +53,14 @@ namespace OnlineShop.Web.Test.Services
             }));
             var productsList = ProductsService.GetProducts();
             productsList.Should().NotBeEmpty();
+        }
+
+        [Test]
+        public void GetProducts_Initial() 
+        {
+            var ProductsRepositoryStub = MockRepository.GenerateMock<IRepository<Producto>>();
+            var ImagesRepositoryStub = MockRepository.GenerateMock<IRepository<Imagenes>>();
+            var ProductsService = new ProductoService(ProductsRepositoryStub, ImagesRepositoryStub); 
         }
 
 
