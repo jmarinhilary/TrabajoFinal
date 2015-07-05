@@ -120,6 +120,12 @@
   <data name="CarpetaImagenes" xml:space="preserve">
     <value>Imagenes</value>
   </data>
+  <data name="EstadoAnulado" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="EstadoAprobado" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="ImgFileUpload" xml:space="preserve">
     <value>&lt;img src='{0}' class='img-responsive'&gt;</value>
   </data>

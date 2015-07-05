@@ -12,13 +12,11 @@ namespace OnlineShop.Services.Entities
 {
     public class ImagenService : IDisposable
     {
-        private IRepository<Imagenes> _imagenesRepository;
-        private ShopContext _context;
+        private IRepository<Imagenes> _imagenesRepository;        
 
-        public ImagenService ()	
+        public ImagenService(IRepository<Imagenes> imagenesRepository)	
         {
-            this._context = new ShopContext();
-            this._imagenesRepository = new ImagenesRepository(_context);
+            this._imagenesRepository = imagenesRepository;
         }
 
         public void GrabarImagenesProducto(ImagenesViewModel viewModel) 
@@ -39,8 +37,7 @@ namespace OnlineShop.Services.Entities
         }
 
         public void Dispose()
-        {
-            this._context = null;
+        {            
             this._imagenesRepository = null;
         }
     }

@@ -15,12 +15,13 @@ namespace OnlineShop.Services.Entities
         private IRepository<Imagenes> _imagenesRepository;
         private ShopContext _shopContext;
 
-        public ProductoService()
+
+        public ProductoService(IRepository<Producto> productoRepository, IRepository<Imagenes> imagenesRepository)
         {
-            this._shopContext = new ShopContext();
-            this._productoRepository = new ProductoRepository(_shopContext);
-            this._imagenesRepository = new ImagenesRepository(_shopContext);
+            this._productoRepository = productoRepository;
+            this._imagenesRepository = imagenesRepository;
         }
+
 
         public IEnumerable<ProductoIndexViewModel> GetProducts()
         {

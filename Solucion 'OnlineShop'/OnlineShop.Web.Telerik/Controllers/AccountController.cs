@@ -161,7 +161,7 @@ namespace OnlineShop.Web.Telerik.Controllers
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
-                    _clienteService = new ClienteService();
+                    //_clienteService = new ClienteService();
                     _clienteService.Create(
                         new ClienteViewModel
                         {

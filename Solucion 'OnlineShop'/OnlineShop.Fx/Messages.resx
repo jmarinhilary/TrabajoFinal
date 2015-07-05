@@ -138,6 +138,12 @@
   <data name="MensajeActualzarError" xml:space="preserve">
     <value>No se Actualizó</value>
   </data>
+  <data name="PedidoAceptado" xml:space="preserve">
+    <value>Se Aceptó el pedido nro. {0}</value>
+  </data>
+  <data name="PedidoAnulado" xml:space="preserve">
+    <value>Se Anuló el pedido nro. {0}</value>
+  </data>
   <data name="StockCustom" xml:space="preserve">
     <value>El campo {0} debe ser entre {1} y {2}</value>
   </data>

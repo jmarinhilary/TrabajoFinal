@@ -16,7 +16,7 @@
         </div>
         @foreach (var item in Model)
         {
-            <div class="col-xs-6 col-md-4 text-center">
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                 <a href="@Url.Action("ProductoDetalle", "Producto", new { id = @item.Id })">
                     <img class="img-responsive" src="@Url.Content(@item.Ruta)" alt="@item.Nombre" />
                 </a>

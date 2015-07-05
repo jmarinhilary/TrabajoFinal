@@ -22,6 +22,7 @@ namespace OnlineShop.Services.AutoMapper
         {
             Mapper.CreateMap<Producto, EditProductoViewModel>();
             Mapper.CreateMap<Marca, MarcaViewModel>();
+            Mapper.CreateMap<Pedido, PedidoViewModel>();
         }
     }
 }

@@ -13,11 +13,9 @@ namespace OnlineShop.Services.Entities
     public class MarcaService : IDisposable
     {
         private IRepository<Marca> _marcaRepository;
-        private ShopContext _context;
-        public MarcaService()
+        public MarcaService(IRepository<Marca> marcaRepository)
         {
-            this._context = new ShopContext();
-            this._marcaRepository = new MarcaRepository(_context);
+            this._marcaRepository = marcaRepository;
         }
 
         public IEnumerable<MarcaViewModel> GetMarcas()
@@ -26,11 +24,7 @@ namespace OnlineShop.Services.Entities
             return Mapper.Map<IEnumerable<Marca>, IEnumerable<MarcaViewModel>>(Marcas);
         }
 
-        public void Dispose()
-        {
-            this._context = null;
-            this._marcaRepository = null;
-        }
+        
 
         public void ActualizarMarca(MarcaViewModel marcaViewModel)
         {
@@ -42,6 +36,11 @@ namespace OnlineShop.Services.Entities
         {
             var marca = Mapper.Map<MarcaViewModel, Marca>(marcaViewModel);
             _marcaRepository.Create(marca);
+        }
+
+        public void Dispose()
+        {
+            this._marcaRepository = null;
         }
     }
 }

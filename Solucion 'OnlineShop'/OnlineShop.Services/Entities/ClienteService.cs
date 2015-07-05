@@ -12,12 +12,11 @@ namespace OnlineShop.Services.Entities
     
     public class ClienteService : IDisposable
     {
-        private IRepository<Cliente> _clienteRepository;
-        private ShopContext _shopContext;
-        public ClienteService()
+        private IRepository<Cliente> _clienteRepository;               
+
+        public ClienteService(IRepository<Cliente> clienteRepository)
         {
-            this._shopContext = new ShopContext();
-            this._clienteRepository = new ClienteRepository(_shopContext);
+            this._clienteRepository = clienteRepository;
         }
 
         public void Create(ClienteViewModel ClienteViewModel) 
@@ -32,8 +31,7 @@ namespace OnlineShop.Services.Entities
         }
 
         public void Dispose() 
-        {
-            this._shopContext = null;
+        {            
             this._clienteRepository = null;
         }
     }

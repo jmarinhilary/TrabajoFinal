@@ -12,13 +12,11 @@ namespace OnlineShop.Services.Entities
 {
     public class CategoriaService : IDisposable
     {
-        private IRepository<Categoria> _categoriaRepository;
-        private ShopContext _context;
+        private IRepository<Categoria> _categoriaRepository;        
 
-        public CategoriaService()
+        public CategoriaService(IRepository<Categoria> categoriaRepository)
         {
-            this._context = new ShopContext();
-            this._categoriaRepository = new CategoriaRepository(_context);
+            this._categoriaRepository = categoriaRepository;
         }
 
         public IEnumerable<CategoriaViewModel> GetCategoria() 
@@ -32,8 +30,7 @@ namespace OnlineShop.Services.Entities
 
         public void Dispose()
         {
-            this._categoriaRepository = null;
-            this._context = null;
+            this._categoriaRepository = null;           
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="ViewModels\ImagenesViewModel.cs" />
     <Compile Include="ViewModels\MarcaViewModel.cs" />
     <Compile Include="ViewModels\MtoProductoViewModel.cs" />
+    <Compile Include="ViewModels\PedidoAdminViewModel.cs" />
     <Compile Include="ViewModels\PedidoViewModel.cs" />
     <Compile Include="ViewModels\ProductoViewModel.cs" />
   </ItemGroup>

@@ -1,0 +1,61 @@
+﻿<div ng-controller="AdminPedidoController" ng-cloak>
+    <h2>{{titulo}}</h2>
+    <p></p>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <span href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    {{pedido}}
+                </span>
+                <span href="#" class="list-group-item" ng-repeat="item in lista">
+                    <p>Nro Pedido: {{item.Id}}</p>
+                    <p>Cliente: {{item.UserName}}</p>
+                    <p>Precio: {{item.Total | currency:"S/."}}</p>
+                    <button ng-class="item.IdEstadoPed == null? 'btn btn-sm btn-danger' : 'btn btn-sm btn-success'" ng-click="verPedidos(item.Id)">Ver Pedido</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="list-group">
+                <span href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    {{detalle}} {{NroPedido}}
+                </span>
+                <span href="#" class="list-group-item productos">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Igv</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="item in listaDetalle">
+                            <td><img src="{{item.Imagen}}" class="img-responsive" style="max-width:200px !important" /></td>
+                            <td>{{item.NombreProducto}}</td>
+                            <td>{{item.Precio | currency:"S/."}} </td>
+                            <td>{{item.Igv | currency:"S/."}}</td>
+                            <td>{{item.PTotal | currency:"S/."}}</td>
+                        </tr>
+                        <tfoot>
+                            <tr>
+                                <th>{{EstadoFinal}}</th>
+                                <th><button class="btn btn-primary" ng-class="Estado == null  ? '' : 'disabled'"  ng-click="ConfirmarPedido(NroPedido)">Confirmar Pedido</button></th>
+                                <th>{{TotalNeto | currency:"S/."}}</th>
+                                <th>{{TotalIgv | currency:"S/."}}</th>
+                                <th>{{TotalPrecio | currency:"S/."}}</th>
+                            </tr>
+                        </tfoot>
+                    </table>                                      
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .productos {
+        border: 0px !important;
+    }
+</style>

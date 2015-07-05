@@ -124,6 +124,24 @@ namespace OnlineShop.Fx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se Aceptó el pedido nro. {0}.
+        /// </summary>
+        public static string PedidoAceptado {
+            get {
+                return ResourceManager.GetString("PedidoAceptado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se Anuló el pedido nro. {0}.
+        /// </summary>
+        public static string PedidoAnulado {
+            get {
+                return ResourceManager.GetString("PedidoAnulado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El campo {0} debe ser entre {1} y {2}.
         /// </summary>
         public static string StockCustom {

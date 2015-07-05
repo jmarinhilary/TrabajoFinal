@@ -34,7 +34,7 @@
                         </tr>
                     }
                 </table>
-                <a class="btn btn-warning" href="@Url.Action("ProductoDetalle", new { id = Model.LastOrDefault().Id })" role="button">CONTINUAR COMPRANDO</a>
+                <a class="btn btn-warning" href="@Url.Action("Index")" role="button">CONTINUAR COMPRANDO</a>
                 <a class="btn btn-success" href="@Url.Action("RegistroPedido")" role="button">CONFIRMAR PEDIDO</a>
             </div>
             if (TempData["Mensaje"] != null) 

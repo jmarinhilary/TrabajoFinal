@@ -59,6 +59,24 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.Common\OnlineShop.Common.csproj">
+      <Project>{b641d76b-bca6-4a71-ab43-a658c960dbe4}</Project>
+      <Name>OnlineShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Domain\OnlineShop.Domain.csproj">
+      <Project>{26fda740-3db8-445e-87a6-9ca1e5dd8e9e}</Project>
+      <Name>OnlineShop.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Repositories\OnlineShop.Repositories.csproj">
+      <Project>{02bc5d02-a57a-42ce-8e53-16f63b9c48cd}</Project>
+      <Name>OnlineShop.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Services\OnlineShop.Services.csproj">
+      <Project>{7e28c9c6-ac01-422b-aab4-3a717cb12639}</Project>
+      <Name>OnlineShop.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
